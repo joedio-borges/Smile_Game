@@ -1,37 +1,64 @@
-.invisivel{
-    display:none;
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.caixa-jogo {
+  width: 80px;
+  height: 80px;
+  background-color: #f8f9fa;
+  border: 3px solid #0d6efd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 5px;
+}
+
+.caixa-jogo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  background-color: #e9ecef;
+}
+
+.caixa-jogo.virada {
+  background-color: #fff;
+  border-color: #adb5bd;
+  cursor: default;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.caixa-jogo.correta {
+  background-color: #d1e7dd;
+  border-color: #198754;
+}
+
+.caixa-jogo.errada {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+}
+
+.smile {
+  color: #ffc107;
+  font-size: 2rem;
+}
+
+/* Ajuste para telas pequenas */
+@media (max-width: 576px) {
+  .caixa-jogo {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
   }
-  .visivel{
-    display:inline;
+  
+  .smile {
+    font-size: 1.5rem;
   }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
-  }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
-    text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
-  }
+}

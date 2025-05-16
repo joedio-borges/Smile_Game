@@ -1,110 +1,154 @@
-    //declaraçao das variaveis globais
-    let desempenho = 0;
-    let tentativas = 0;
-    let acertos = 0;
-    let jogar = true;
-
-    //captura os botoes pelos ids e adiciona um evento de clique
+document.addEventListener('DOMContentLoaded', function () {
+    // Elementos do DOM
+    const areaCartas = document.getElementById('area-cartas');
+    const btnJogarNovamente = document.getElementById('jogar-novamente');
     const btnReiniciar = document.getElementById('reiniciar');
-    const btnJogarNovamente = document.getElementById('joganovamente');
+    const mensagem = document.getElementById('mensagem');
+    const tentativasSpan = document.getElementById('tentativas');
+    const recordeSpan = document.getElementById('recorde');
+    const selectDificuldade = document.getElementById('dificuldade');
 
-    //funçao que zera os valores das variáveis controladoras
-    function reiniciar() {
-      desempenho = 0;
-      tentativas = 0;
-      acertos = 0;
-      jogar = true;
-      jogarNovamente();
-      atualizaPlacar(0, 0);
-      //mostra o botao jogarnovamente alterando a classe css (className)
-      btnJogarNovamente.className = 'visivel';
-      //oculta o botao reiniciar alterando a classe css (className)
-      btnReiniciar.className = 'invisivel';
-    }
+    // Variáveis do jogo
+    let posicaoSmile;
+    let tentativas = 0;
+    let jogoAtivo = true;
+    let numCartas = 4; // Padrão: normal (4 cartas)
+    let sequenciaAtual = 0;
+    let recordeSequencia = parseInt(localStorage.getItem('recordeSequencia')) || 0;
+    recordeSpan.textContent = recordeSequencia;
 
-    //funçao jogar novamente
-    function jogarNovamente() {
-      jogar = true;//variável jogar volta a ser verdadeira
-      //armazenamos todas as div na variável divis (getElementsByTagName)
-      let divis = document.getElementsByTagName("div");
-      //percorremos todas as divs armazenadas
-      for (i = 0; i < divis.length; i++) {
-        //verificamos se sao as divs com ids 0 ou 1 ou 2
-        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2) {
-          //alteramos a classe css das divs 0, 1 e 2 (className)
-          divis[i].className = "inicial";
+    // Inicializa o jogo
+    novoJogo();
+
+    // Cria as cartas do jogo
+    function criarCartas() {
+        areaCartas.innerHTML = ''; // Limpa as cartas existentes
+        
+        for (let i = 0; i < numCartas; i++) {
+            const carta = document.createElement('div');
+            carta.className = 'caixa-jogo';
+            carta.id = i;
+            carta.textContent = '?';
+            carta.onclick = function() { verifica(this); };
+            areaCartas.appendChild(carta);
         }
-      }
-
-      //armazenamos a imagem do Smile na variável imagem (getElementById)
-      let imagem = document.getElementById("imagem");
-      //se a imagem nao for vazia (se ela existir)
-      if (imagem != "") {
-        //removemos a imagem do Smile
-        imagem.remove();
-      }
     }
 
-    //funçao que atualiza o placar
-    function atualizaPlacar(acertos, tentativas) {
-      //calcula o desempenho em porcentagem
-      desempenho = (acertos / tentativas) * 100;
-      //escreve o placar com os valores atualizados (innerHTML)
-      document.getElementById("resposta").innerHTML = "Placar - Acertos: " + acertos + " Tentativas: " + tentativas + " Desempenho: " + Math.round(desempenho) + "%";
+    function novoJogo() {
+        jogoAtivo = true;
+        tentativas = 0;
+        tentativasSpan.textContent = tentativas;
+        mensagem.style.display = 'none';
 
+        // Define o número de cartas baseado na dificuldade selecionada
+        numCartas = parseInt(selectDificuldade.value);
+        criarCartas();
+
+        // Escolhe uma posição aleatória para o smile
+        posicaoSmile = Math.floor(Math.random() * numCartas);
+
+        btnJogarNovamente.style.display = 'none';
+        btnReiniciar.style.display = 'none';
     }
 
-    //funçao executada quando o jogador acertou
-    function acertou(obj) {
-      //altera a classe CSS da <div> escolhida pelo jogador (className)
-      obj.className = "acertou";
-      //Criar uma constante img que armazena um novo objeto imagem com largura de 100px
-      const img = new Image(100);
-      img.id = "imagem";
-      //altera o atributo src (source) da imagem criada
-      img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
-      //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
-      obj.appendChild(img);
-    }
+    window.verifica = function (elemento) {
+        if (!jogoAtivo) return;
 
-    //Função que sorteia um número aleatório entre 0 e 2 e verifica se o jogador acertou
-    function verifica(obj) {
-      //se jogar é verdadeiro
-      if (jogar) {
-        //jogar passa a ser false
-        jogar = false;
-        //incrementa as tentativas
         tentativas++;
-        //verifica se jogou 3 vezes
-        if (tentativas == 3) {
-          //oculta o botao joganovamente alterando a classe css (getElementById e className)
-          btnJogarNovamente.className = 'invisivel';
-          //mostra o botao reiniciar alterando a classe css (getElementById e className)
-          btnReiniciar.className = 'visivel';
+        tentativasSpan.textContent = tentativas;
+
+        const id = parseInt(elemento.id);
+
+        if (id === posicaoSmile) {
+            // Acertou
+            elemento.classList.add('correta', 'virada');
+            elemento.innerHTML = '<i class="bi bi-emoji-smile-fill smile"></i>';
+
+            mensagem.textContent = `Parabéns! Você encontrou o smile em ${tentativas} tentativa(s)!`;
+            mensagem.className = 'alert alert-success fs-5';
+            mensagem.style.display = 'block';
+
+            if (tentativas === 1) {
+                // Acertou de primeira
+                confetti();
+                sequenciaAtual++;
+
+                if (sequenciaAtual > recordeSequencia) {
+                    recordeSequencia = sequenciaAtual;
+                    recordeSpan.textContent = recordeSequencia;
+                    localStorage.setItem('recordeSequencia', recordeSequencia);
+                }
+            } else {
+                // Interrompe sequência
+                sequenciaAtual = 0;
+            }
+
+            jogoAtivo = false;
+            btnJogarNovamente.style.display = 'inline-block';
+            btnReiniciar.style.display = 'inline-block';
+        } else {
+            // Errou
+            elemento.classList.add('errada', 'virada');
+            elemento.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/512/179/179386.png" width="40" height="40" alt="Erro">';
+
+            mensagem.textContent = 'Você errou! Tente novamente.';
+            mensagem.className = 'alert alert-danger fs-5';
+            mensagem.style.display = 'block';
+
+            jogoAtivo = false;
+            btnJogarNovamente.style.display = 'inline-block';
+            btnReiniciar.style.display = 'inline-block';
+
+            // Revela onde estava o smile
+            const cartas = document.querySelectorAll('.caixa-jogo');
+            cartas[posicaoSmile].innerHTML = '<i class="bi bi-emoji-smile-fill smile"></i>';
+            cartas[posicaoSmile].classList.add('correta', 'virada');
+
+            // Quebra sequência
+            sequenciaAtual = 0;
         }
-        //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random)
-        let sorteado = Math.floor(Math.random() * 3);
-        //se o id da <div> escolhida pelo jogador for igual ao número sorteado
-        if (obj.id == sorteado) {
-          //chama a funçao acertou passando a div escolhida pelo jogador
-          acertou(obj);
-          //incrementa o contador de acertos
-          acertos++;
-        } else {//se errou a tentativa
-          //altera a classe da <div> escolhida pelo jogador para a classe errou
-          obj.className = "errou";
-          //armazena a div aonde Smile está escondido (getElementById)
-          const objSorteado = document.getElementById(sorteado);
-          //chama a funçao acertou para mostrar a div aonde está o Smile
-          acertou(objSorteado);
-        }
-        //chama a funçao que atualiza o placar
-        atualizaPlacar(acertos, tentativas);
-      } else {//se o jogador clicar em outra carta sem reiniciar o jogo, recebe um alerta
-        alert('Clique em "Jogar novamente"');
-      }
+    };
+
+    // Event Listeners
+    btnJogarNovamente.addEventListener('click', novoJogo);
+    btnReiniciar.addEventListener('click', function () {
+        recordeSequencia = 0;
+        sequenciaAtual = 0;
+        recordeSpan.textContent = recordeSequencia;
+        localStorage.setItem('recordeSequencia', recordeSequencia);
+        novoJogo();
+    });
+
+    // Quando a dificuldade é alterada, reinicia o jogo
+    selectDificuldade.addEventListener('change', function() {
+        novoJogo();
+    });
+
+    // Função confete
+    function confetti() {
+        const duration = 1 * 1000;
+        const end = Date.now() + duration;
+
+        (function frame() {
+            confettiLib({
+                particleCount: 5,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+            });
+            confettiLib({
+                particleCount: 5,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 },
+            });
+
+            if (Date.now() < end) {
+                requestAnimationFrame(frame);
+            }
+        })();
     }
 
-//adiciona eventos aos botões
-btnJogarNovamente.addEventListener('click', jogarNovamente);
-btnReiniciar.addEventListener('click', reiniciar);
+    // Corrige confetti global
+    const confettiLib = window.confetti || function () { };
+});
