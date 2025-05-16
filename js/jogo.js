@@ -17,9 +17,10 @@
       jogarNovamente();
       atualizaPlacar(0, 0);
       //mostra o botao jogarnovamente alterando a classe css (className)
-      btnJogarNovamente.className = 'visivel';
+      btnJogarNovamente.className = 'invisivel';
       //oculta o botao reiniciar alterando a classe css (className)
       btnReiniciar.className = 'invisivel';
+      
     }
 
     //funçao jogar novamente
@@ -30,7 +31,7 @@
       //percorremos todas as divs armazenadas
       for (i = 0; i < divis.length; i++) {
         //verificamos se sao as divs com ids 0 ou 1 ou 2
-        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2) {
+        if (divis[i].id == 1 || divis[i].id == 2 || divis[i].id == 3 || divis[i].id == 4 || divis[i].id == 5) {
           //alteramos a classe css das divs 0, 1 e 2 (className)
           divis[i].className = "inicial";
         }
@@ -42,6 +43,13 @@
       if (imagem != "") {
         //removemos a imagem do Smile
         imagem.remove();
+      }
+      //armazenamos a imagem do Sad emoji na variável imagem (getElementById)
+      let imagem_errada = document.getElementById("imagem_erro");
+      //se a imagem nao for vazia (se ela existir)
+      if (imagem_errada != "") {
+        //removemos a imagem do Sad
+        imagem_errada.remove();
       }
     }
 
@@ -65,9 +73,10 @@
       img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
       //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
       obj.appendChild(img);
+      
     }
 
-    //Função que sorteia um número aleatório entre 0 e 2 e verifica se o jogador acertou
+    //Função que sorteia um número aleatório entre 1 e 5 e verifica se o jogador acertou
     function verifica(obj) {
       //se jogar é verdadeiro
       if (jogar) {
@@ -75,15 +84,19 @@
         jogar = false;
         //incrementa as tentativas
         tentativas++;
-        //verifica se jogou 3 vezes
-        if (tentativas == 3) {
+    //Torna o botão Jogar Novamente visivel <div id="4" class="inicial" onclick="verifica(this)">2</div>
+       btnJogarNovamente.className = 'visivel';
+
+
+        //verifica se jogou 5 vezes
+        if (tentativas == 5) {
           //oculta o botao joganovamente alterando a classe css (getElementById e className)
           btnJogarNovamente.className = 'invisivel';
           //mostra o botao reiniciar alterando a classe css (getElementById e className)
           btnReiniciar.className = 'visivel';
         }
-        //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random)
-        let sorteado = Math.floor(Math.random() * 3);
+        //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random) e acima de 0 (+1)
+        let sorteado = Math.floor(Math.random() * 4)+1;
         //se o id da <div> escolhida pelo jogador for igual ao número sorteado
         if (obj.id == sorteado) {
           //chama a funçao acertou passando a div escolhida pelo jogador
@@ -93,7 +106,14 @@
         } else {//se errou a tentativa
           //altera a classe da <div> escolhida pelo jogador para a classe errou
           obj.className = "errou";
-          //armazena a div aonde Smile está escondido (getElementById)
+          // cria uma const que armazena uma nova imagem
+          const img_erro = new Image(100);
+          img_erro.id = "imagem_erro";
+          //altera o atributo src (source) da imagem criada
+      img_erro.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Fluent_Emoji_flat_1f625.svg/640px-Fluent_Emoji_flat_1f625.svg.png";
+      //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
+      obj.appendChild(img_erro);
+     //armazena a div aonde Smile está escondido (getElementById)
           const objSorteado = document.getElementById(sorteado);
           //chama a funçao acertou para mostrar a div aonde está o Smile
           acertou(objSorteado);
