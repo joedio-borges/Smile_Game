@@ -24,9 +24,9 @@
     padding: 10px;
     margin: 20px;
   }
+
   .errou {
     text-align: center;
-    font-size: 100px;
     color: white;
     background-color: red;
     width: 150px;
@@ -34,4 +34,12 @@
     border: 15px solid black;
     padding: 10px;
     margin: 20px;
+  }
+
+  .invisivel {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 20px;
+    right: 100px;
   }
