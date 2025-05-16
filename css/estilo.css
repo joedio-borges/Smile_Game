@@ -1,37 +1,144 @@
-.invisivel{
-    display:none;
+.invisivel {
+  display: none;
+}
+
+.visivel {
+  display: inline;
+}
+
+.inicial {
+  text-align: center;
+  font-size: 60px;
+  font-family: 'Arial', sans-serif;
+  background-color: lightgrey;
+  width: 150px;
+  height: 200px;
+  border: 15px solid green;
+  padding: 10px;
+  margin: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.acertou {
+  text-align: center;
+  color: navy;
+  background-color: LawnGreen;
+  width: 150px;
+  height: 200px;
+  border: 15px solid yellow;
+  padding: 10px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.errou {
+  text-align: center;
+  color: white;
+  background-color: red;
+  width: 150px;
+  height: 200px;
+  border: 15px solid black;
+  padding: 10px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Efeitos visuais */
+#effect-container {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#effect-container.explosion-effect,
+#effect-container.confetti-effect {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.explosion-effect {
+  background-color: rgba(255, 69, 0, 0.8);
+  color: white;
+  animation: shake-screen 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake-screen {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.explosion-effect h1 {
+  font-size: 4em;
+  color: yellow;
+}
+.explosion-effect p {
+  font-size: 1.5em;
+  color: white;
+}
+
+.confetti-effect {
+  background-color: rgba(76, 175, 80, 0.7);
+  color: white;
+  position: relative;
+}
+
+.confetti-effect h1 {
+  font-size: 3em;
+  color: gold;
+  text-shadow: 2px 2px 4px #000000;
+}
+.confetti-effect p {
+  font-size: 1.5em;
+  color: white;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
   }
-  .visivel{
-    display:inline;
-  }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
-  }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
-    text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
-  }
+}
+
+.confetti-effect::before, .confetti-effect::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 20px;
+  background: yellow;
+  animation: fall 3s linear infinite;
+  top: -20px;
+}
+.confetti-effect::before { left: 20%; animation-delay: 0s; background: blue; }
+.confetti-effect::after { left: 80%; animation-delay: 1.5s; background: pink; }
+
+/* Layout das cartas para quebrar linha se necessário */
+#linha1 {
+  flex-wrap: wrap;
+}
