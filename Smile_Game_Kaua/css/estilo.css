@@ -1,0 +1,40 @@
+.invisivel{
+    display:none;
+  }
+  .visivel{
+    display:inline;
+  }
+  .inicial {
+    text-align: center;
+    font-size: 100px;
+    background-color: rgb(255, 76, 186);
+    width: 150px;
+    height: 200px;
+    border: 15px solid rgb(119, 0, 255);
+    padding: 10px;
+    margin: 20px;
+  }
+  .acertou {
+    text-align: center;
+    color: rgb(0, 255, 242);
+    background-color: rgb(0, 244, 252);
+    width: 150px;
+    height: 200px;
+    border: 15px solid rgb(255, 0, 242);
+    padding: 10px;
+    margin: 20px;
+  }
+  .errou {
+    text-align: center;
+    font-size: 100px;
+    color: rgb(255, 0, 179);
+    background-color: rgb(255, 84, 84);
+    width: 150px;
+    height: 200px;
+    border: 15px solid rgb(255, 0, 242);
+    padding: 10px;
+    margin: 20px;
+  }
+  body {
+  background-color: #fa85b4; 
+}
