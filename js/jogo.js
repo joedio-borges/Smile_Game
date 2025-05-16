@@ -56,55 +56,86 @@
 
     //funçao executada quando o jogador acertou
     function acertou(obj) {
-      //altera a classe CSS da <div> escolhida pelo jogador (className)
+      // Altera a classe para "acertou"
       obj.className = "acertou";
-      //Criar uma constante img que armazena um novo objeto imagem com largura de 100px
+      
+      // Adiciona a animação de acerto
+      obj.classList.add('acertouAnimacao');
+      
+      // Cria a imagem do Slime
       const img = new Image(100);
       img.id = "imagem";
-      //altera o atributo src (source) da imagem criada
-      img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
-      //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
+      img.src = "https://ichef.bbci.co.uk/ace/ws/800/cpsprodpb/163A6/production/_104764019_gettyimages-873395522.jpg.webp";
       obj.appendChild(img);
+    
+      // Remove a animação de acerto após 0.5 segundos (tempo da animação)
+      setTimeout(() => {
+        obj.classList.remove('acertouAnimacao');
+      }, 500);
     }
+    
 
     //Função que sorteia um número aleatório entre 0 e 2 e verifica se o jogador acertou
-    function verifica(obj) {
-      //se jogar é verdadeiro
-      if (jogar) {
-        //jogar passa a ser false
-        jogar = false;
-        //incrementa as tentativas
-        tentativas++;
-        //verifica se jogou 3 vezes
-        if (tentativas == 3) {
-          //oculta o botao joganovamente alterando a classe css (getElementById e className)
-          btnJogarNovamente.className = 'invisivel';
-          //mostra o botao reiniciar alterando a classe css (getElementById e className)
-          btnReiniciar.className = 'visivel';
-        }
-        //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random)
-        let sorteado = Math.floor(Math.random() * 3);
-        //se o id da <div> escolhida pelo jogador for igual ao número sorteado
-        if (obj.id == sorteado) {
-          //chama a funçao acertou passando a div escolhida pelo jogador
-          acertou(obj);
-          //incrementa o contador de acertos
-          acertos++;
-        } else {//se errou a tentativa
-          //altera a classe da <div> escolhida pelo jogador para a classe errou
-          obj.className = "errou";
-          //armazena a div aonde Smile está escondido (getElementById)
-          const objSorteado = document.getElementById(sorteado);
-          //chama a funçao acertou para mostrar a div aonde está o Smile
-          acertou(objSorteado);
-        }
-        //chama a funçao que atualiza o placar
-        atualizaPlacar(acertos, tentativas);
-      } else {//se o jogador clicar em outra carta sem reiniciar o jogo, recebe um alerta
-        alert('Clique em "Jogar novamente"');
+   // Função executada quando o jogador erra
+// Função que executa quando o jogador erra ou acerta
+// Função executada quando o jogador erra
+function verifica(obj) {
+  if (jogar) {
+    jogar = false;
+    tentativas++;
+
+    if (tentativas == 10) {
+      btnJogarNovamente.className = 'invisivel';
+      btnReiniciar.className = 'visivel';
+    }
+
+    let sorteado = Math.floor(Math.random() * 3);
+
+    if (obj.id == sorteado) {
+      acertou(obj);
+      acertos++;
+    } else {
+      obj.className = "erro"; // Altera a classe para erro
+      obj.classList.add('erroAnimado'); // Adiciona a animação de erro
+
+      // Cria a imagem de erro e a posiciona dentro da carta de erro
+      const imgErro = new Image(50); // Tamanho ajustado para caber na carta
+      imgErro.src = "https://images.icon-icons.com/3413/PNG/512/sad_emoji_icon_217677.png"; // Link da imagem de erro
+      imgErro.alt = "Erro!";
+      obj.appendChild(imgErro); // Adiciona a imagem dentro da div
+
+      setTimeout(() => {
+        obj.classList.remove('erroAnimado'); // Remove a animação de erro
+        imgErro.remove(); // Remove a imagem de erro após a animação
+      }, 1000); // O tempo aqui deve coincidir com a duração da animação
+
+      const objSorteado = document.getElementById(sorteado);
+      acertou(objSorteado);
+
+      const mensagemErro = document.getElementById('mensagemErro');
+      if (mensagemErro) {
+        mensagemErro.innerHTML = "Você errou! Tente novamente!";
+        mensagemErro.style.color = 'red';
+        mensagemErro.classList.add('mensagemErroAnimada'); // Aplica animação à mensagem de erro
+        
+        // Remove a animação após a duração
+        setTimeout(() => {
+          mensagemErro.classList.remove('mensagemErroAnimada');
+        }, 500);
       }
     }
 
+    atualizaPlacar(acertos, tentativas);
+  } else {
+    alert('Clique em "Jogar novamente"');
+  }
+}
+
+// Função que exibe a mensagem de resultado (quando acerta ou erra todas as alternativas)
+
+
+    
+    
 //adiciona eventos aos botões
 btnJogarNovamente.addEventListener('click', jogarNovamente);
 btnReiniciar.addEventListener('click', reiniciar);
