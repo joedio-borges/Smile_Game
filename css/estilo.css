@@ -7,31 +7,73 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: rgb(255, 255, 255);
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid rgb(187, 255, 187);
     padding: 10px;
     margin: 20px;
+    border-radius: 15%;
   }
   .acertou {
     text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
+    color: rgb(255, 255, 221);
+    background-color: rgb(255, 255, 255);
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid #5c3b00;
     padding: 10px;
     margin: 20px;
+    border-radius: 15%;
   }
   .errou {
     text-align: center;
-    font-size: 100px;
+    font-size: 15px;
     color: white;
-    background-color: red;
+    background-color: rgb(255, 255, 255);
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px solid rgb(255, 117, 117);
     padding: 10px;
     margin: 20px;
+    border-radius: 15%;
   }
+
+
+  #div1 {
+  text-align: center;
+}
+
+.botao {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  background-color: #ffde8f;
+  color: #5c3b00;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 150px;
+}
+
+.botao:hover {
+  background-color: #ffd670;
+  transform: scale(1.05);
+}
+
+.botao:active {
+  background-color: #ffc34d;
+  transform: scale(0.98);
+}
+
+body{
+  background-color: rgb(255, 250, 222);
+}
+
+#fundo{
+  background-color: #ffd896;
+  border-radius: 5%;
+}
