@@ -1,37 +1,157 @@
-.invisivel{
-    display:none;
+img {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  .visivel{
-    display:inline;
+  100% {
+    opacity: 1;
   }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
-  }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
-    text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
-  }
+}
+
+button {
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+  background-color: rgb(241, 87, 151);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Hover para os botões */
+button:hover {
+  transform: scale(1.1);
+  background-color: rgb(235, 124, 170);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+div {
+  border-radius: 15px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Hover nas divs */
+div:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+body {
+  background: linear-gradient(45deg, #ff6d9d, #f43481, #dc3670, #f61335);
+  background-size: 400% 400%;
+  animation: gradientBackground 15s ease infinite;
+  font-family: 'Arial', sans-serif;
+  color: #000000; /* Garantir que o texto será visível */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+
+
+@keyframes gradientBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+h1 {
+  color: rgb(249, 50, 216);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 48px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #000000; /* Garantir que a cor do texto seja visível em todos os casos */
+}
+
+
+.invisivel {
+  display: none;
+}
+.visivel {
+  display: inline;
+}
+.inicial {
+  text-align: center;
+  font-size: 100px;
+  background-color: lightgrey;
+  width: 150px;
+  height: 200px;
+  border: 15px solid rgb(152, 0, 104);
+  padding: 10px;
+  margin: 20px;
+}
+.acertou {
+  text-align: center;
+  color: rgb(242, 149, 206);
+  background-color: rgb(237, 37, 255);
+  width: 150px;
+  height: 200px;
+  border: 15px solid rgb(0, 255, 234);
+  padding: 10px;
+  margin: 20px;
+}
+.errou {
+  text-align: center;
+  color: white;
+  background-color: red;
+  width: 150px;
+  height: 200px;
+  border: 15px solid black;
+  padding: 10px;
+  margin: 20px;
+}
+
+
+@keyframes brilhoAcerto {
+  0% { box-shadow: 0 0 0px rgb(255, 0, 183); }
+  50% { box-shadow: 0 0 20px 10px rgb(255, 0, 212); }
+  100% { box-shadow: 0 0 0px rgb(255, 0, 242); }
+}
+
+.efeito-acerto {
+  animation: brilhoAcerto 3s ease-in-out;
+}
+
+.giro {
+  animation: girar 0.6s ease-in-out;
+}
+
+@keyframes girar {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+.efeito-erro {
+  animation: brilhoErro 3s ease-in-out;
+}
+
+/* Efeito sacudir (erro) */
+@keyframes sacudir {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.sacudir {
+  animation: sacudir 3s ease;
+}
