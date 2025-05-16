@@ -1,37 +1,217 @@
-.invisivel{
-    display:none;
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* --- Base Styles --- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #eef1f5, #f8f9fa);
+  color: #333;
+  margin: 0;
+  padding-top: 20px; /* Add some space at the top */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#principal {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 900px; /* Max width for the main container */
+  width: 95%; /* Responsive width */
+}
+
+/* --- Header Styling --- */
+h1 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 2.5rem; /* Responsive font size */
+}
+
+#principal > p { /* Targeting the instruction paragraph */
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* --- Game Card Styles --- */
+.game-card {
+  width: clamp(100px, 18vw, 130px); /* Responsive width */
+  height: clamp(130px, 22vw, 170px); /* Responsive height */
+  background-color: #ffffff;
+  border: 3px solid #6ab04c; /* Initial border color */
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: clamp(40px, 10vw, 70px); /* Responsive font size for number/icon */
+  font-weight: 600;
+  color: #34495e;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
+}
+
+.inicial {
+  /* Inherits from .game-card, specific overrides if any */
+  border-color: #6ab04c; /* Greenish */
+}
+
+.acertou {
+  /* Inherits from .game-card */
+  background-color: #A8E6CF; /* Light Mint/Teal */
+  border-color: #36A2EB; /* Blue */
+  color: #ffffff; /* Icon color */
+  font-size: clamp(50px, 12vw, 80px); /* Larger icon */
+}
+
+.acertou .fa-check-circle {
+  color: #2ecc71; /* Success green for icon */
+}
+
+.errou {
+  /* Inherits from .game-card */
+  background-color: #FF8A80; /* Soft Red */
+  border-color: #D32F2F; /* Darker Red */
+  color: #ffffff; /* Icon color */
+  font-size: clamp(50px, 12vw, 80px); /* Larger icon */
+}
+
+.errou .fa-times-circle {
+  color: #c0392b; /* Error red for icon */
+}
+
+
+/* --- Visibility Utility Classes --- */
+.invisivel {
+  display: none !important; /* Important to override Bootstrap if necessary */
+}
+
+.visivel {
+  display: inline-block !important; /* Or 'block' or 'flex' as needed */
+}
+
+/* --- Buttons --- */
+#div1 button {
+  font-family: 'Poppins', sans-serif;
+  background-color: #36A2EB; /* Blue */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  margin: 10px 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+#div1 button:hover {
+  background-color: #2A88C5; /* Darker Blue */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#div1 button:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Feedback Text --- */
+#resposta {
+  font-size: 1.1rem;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  min-height: 2em; /* Prevent layout shift */
+}
+
+/* --- Explosion Overlay --- */
+#explosao-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75); /* Darker for more focus */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  /* Transition for fade out */
+  transition: opacity 0.4s ease-in-out, visibility 0s linear 0.4s;
+}
+
+#explosao-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  /* Transition for fade in */
+  transition-delay: 0s;
+}
+
+#explosao-gif {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 10px; /* Optional: round corners for the gif container */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
   }
-  .visivel{
-    display:inline;
+  #principal > p {
+    font-size: 1rem;
   }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
+  .game-card {
+    /* Sizes already clamped, ensure margins are good for wrapping */
+    margin: 8px;
   }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
+  #div1 button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
-  .errou {
-    text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
+  #resposta {
+    font-size: 1rem;
   }
+}
+
+@media (max-width: 480px) {
+  #principal {
+    padding: 15px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  #div1 {
+    flex-direction: column; /* Stack buttons on very small screens */
+  }
+  #div1 button {
+    width: 80%;
+    margin: 8px auto; /* Center stacked buttons */
+  }
+  .game-card {
+     /* Ensure they don't get too small or too big */
+    width: clamp(80px, 22vw, 110px);
+    height: clamp(100px, 28vw, 140px);
+    font-size: clamp(30px, 8vw, 60px);
+  }
+}

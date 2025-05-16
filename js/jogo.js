@@ -1,12 +1,20 @@
-    //declaraçao das variaveis globais
+//declaraçao das variaveis globais
     let desempenho = 0;
     let tentativas = 0;
     let acertos = 0;
     let jogar = true;
+    let specialEffectTriggeredThisRound = false; // Flag to trigger effects once per "end game" state
 
     //captura os botoes pelos ids e adiciona um evento de clique
     const btnReiniciar = document.getElementById('reiniciar');
     const btnJogarNovamente = document.getElementById('joganovamente');
+    const explosaoOverlay = document.getElementById('explosao-overlay');
+    const respostaText = document.getElementById('resposta'); // Cache placar element
+
+    const CARD_BASE_CLASS = 'game-card';
+    const CARD_INITIAL_CLASS = 'inicial';
+    const CARD_ACERTOU_CLASS = 'acertou';
+    const CARD_ERROU_CLASS = 'errou';
 
     //funçao que zera os valores das variáveis controladoras
     function reiniciar() {
@@ -14,97 +22,140 @@
       tentativas = 0;
       acertos = 0;
       jogar = true;
-      jogarNovamente();
+      specialEffectTriggeredThisRound = false;
+      explosaoOverlay.classList.remove('visible'); // Hide explosion with fade
+      jogarNovamente(); // Resets board
       atualizaPlacar(0, 0);
-      //mostra o botao jogarnovamente alterando a classe css (className)
-      btnJogarNovamente.className = 'visivel';
-      //oculta o botao reiniciar alterando a classe css (className)
-      btnReiniciar.className = 'invisivel';
+      btnJogarNovamente.classList.remove('invisivel');
+      btnJogarNovamente.classList.add('visivel');
+      btnReiniciar.classList.add('invisivel');
+      btnReiniciar.classList.remove('visivel');
     }
 
-    //funçao jogar novamente
+    //funçao jogar novamente (resets board for next pick, not full game stats)
     function jogarNovamente() {
-      jogar = true;//variável jogar volta a ser verdadeira
-      //armazenamos todas as div na variável divis (getElementsByTagName)
-      let divis = document.getElementsByTagName("div");
-      //percorremos todas as divs armazenadas
-      for (i = 0; i < divis.length; i++) {
-        //verificamos se sao as divs com ids 0 ou 1 ou 2
-        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2) {
-          //alteramos a classe css das divs 0, 1 e 2 (className)
-          divis[i].className = "inicial";
-        }
-      }
+      jogar = true;
+      // More specific selection of game cards
+      const gameCards = document.querySelectorAll('#linha1 .game-card');
+      gameCards.forEach(card => {
+        card.className = `${CARD_BASE_CLASS} ${CARD_INITIAL_CLASS}`; // Reset classes
+        card.innerHTML = card.id; // Show number
+      });
 
-      //armazenamos a imagem do Smile na variável imagem (getElementById)
-      let imagem = document.getElementById("imagem");
-      //se a imagem nao for vazia (se ela existir)
-      if (imagem != "") {
-        //removemos a imagem do Smile
-        imagem.remove();
+      // Manage button visibility based on game progression
+      if (tentativas < MIN_TENTATIVAS_FIM_JOGO) {
+          btnJogarNovamente.classList.remove('invisivel');
+          btnJogarNovamente.classList.add('visivel');
+          btnReiniciar.classList.add('invisivel');
+          btnReiniciar.classList.remove('visivel');
+      } else {
+        // If MIN_TENTATIVAS_FIM_JOGO is met, "Reiniciar" should be visible
+        // This logic might be slightly redundant if `verifica` handles it, but good for explicit state
+        btnJogarNovamente.classList.add('invisivel');
+        btnJogarNovamente.classList.remove('visivel');
+        btnReiniciar.classList.remove('invisivel');
+        btnReiniciar.classList.add('visivel');
+      }
+      respostaText.textContent = "Escolha um quadrado!"; // Prompt user for next turn
+      if (tentativas > 0) { // Keep showing score if game has started
+          atualizaPlacar(acertos, tentativas);
       }
     }
 
     //funçao que atualiza o placar
-    function atualizaPlacar(acertos, tentativas) {
-      //calcula o desempenho em porcentagem
-      desempenho = (acertos / tentativas) * 100;
-      //escreve o placar com os valores atualizados (innerHTML)
-      document.getElementById("resposta").innerHTML = "Placar - Acertos: " + acertos + " Tentativas: " + tentativas + " Desempenho: " + Math.round(desempenho) + "%";
-
+    function atualizaPlacar(currentAcertos, currentTentativas) {
+      desempenho = (currentTentativas > 0) ? (currentAcertos / currentTentativas) * 100 : 0;
+      respostaText.innerHTML = `Placar - Acertos: ${currentAcertos} | Tentativas: ${currentTentativas} | Desempenho: ${Math.round(desempenho)}%`;
     }
 
     //funçao executada quando o jogador acertou
     function acertou(obj) {
-      //altera a classe CSS da <div> escolhida pelo jogador (className)
-      obj.className = "acertou";
-      //Criar uma constante img que armazena um novo objeto imagem com largura de 100px
-      const img = new Image(100);
-      img.id = "imagem";
-      //altera o atributo src (source) da imagem criada
-      img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
-      //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
-      obj.appendChild(img);
+      obj.className = `${CARD_BASE_CLASS} ${CARD_ACERTOU_CLASS}`;
+      obj.innerHTML = '<i class="fas fa-check-circle"></i>'; // Modern icon for correct
     }
 
-    //Função que sorteia um número aleatório entre 0 e 2 e verifica se o jogador acertou
+    // Função para exibir a imagem/ícone de erro
+    function errouMostraIcone(obj) {
+        obj.className = `${CARD_BASE_CLASS} ${CARD_ERROU_CLASS}`;
+        obj.innerHTML = '<i class="fas fa-times-circle"></i>'; // Modern icon for incorrect
+    }
+
+    // --- EFEITOS ESPECIAIS ---
+    function triggerExplosao() {
+        if (!explosaoOverlay) return;
+        explosaoOverlay.classList.add('visible'); // Show with fade
+        // const audio = new Audio('som_explosao.mp3'); // Optional sound
+        // audio.play();
+    }
+
+    function triggerConfetti() {
+        confetti({ particleCount: 150, angle: 60, spread: 55, origin: { x: 0, y: 0.7 } });
+        confetti({ particleCount: 150, angle: 120, spread: 55, origin: { x: 1, y: 0.7 } });
+        confetti({ particleCount: 100, angle: 90, spread: 80, origin: { y: 0.5 }});
+    }
+    // --- FIM DOS EFEITOS ESPECIAIS ---
+
+    const MIN_TENTATIVAS_FIM_JOGO = 3;
+
+    //Função que sorteia um número aleatório e verifica se o jogador acertou
     function verifica(obj) {
-      //se jogar é verdadeiro
-      if (jogar) {
-        //jogar passa a ser false
-        jogar = false;
-        //incrementa as tentativas
-        tentativas++;
-        //verifica se jogou 3 vezes
-        if (tentativas == 3) {
-          //oculta o botao joganovamente alterando a classe css (getElementById e className)
-          btnJogarNovamente.className = 'invisivel';
-          //mostra o botao reiniciar alterando a classe css (getElementById e className)
-          btnReiniciar.className = 'visivel';
+      if (!jogar) {
+        // Provide more styled feedback instead of alert if possible, or make alert more informative
+        respostaText.textContent = 'Clique em "Jogar novamente" ou "Reiniciar Jogo" para continuar.';
+        // Simple alert is fine for now based on original behavior
+        // alert('Clique em "Jogar novamente" ou "Reiniciar Jogo" para continuar.');
+        return;
+      }
+
+      jogar = false; // Prevent multiple clicks per turn
+      tentativas++;
+
+      let sorteado = Math.floor(Math.random() * 4).toString(); // Ensure sorteado is a string like obj.id
+
+      if (obj.id === sorteado) {
+        acertou(obj);
+        acertos++;
+        respostaText.textContent = "Você Acertou! Mandou bem!";
+      } else {
+        errouMostraIcone(obj);
+        const objSorteado = document.getElementById(sorteado);
+        if(objSorteado) acertou(objSorteado); // Reveal the correct one
+        respostaText.textContent = "Ops, não foi dessa vez. O sorriso estava no " + sorteado + ".";
+      }
+
+      atualizaPlacar(acertos, tentativas);
+
+      // Logic for buttons and special effects
+      if (tentativas >= MIN_TENTATIVAS_FIM_JOGO) {
+        btnJogarNovamente.classList.add('invisivel');
+        btnJogarNovamente.classList.remove('visivel');
+        btnReiniciar.classList.remove('invisivel');
+        btnReiniciar.classList.add('visivel');
+
+        if (!specialEffectTriggeredThisRound) {
+          if (desempenho === 0) { // 0% after min attempts
+              triggerExplosao();
+              specialEffectTriggeredThisRound = true;
+          } else if (desempenho === 100) { // 100% after min attempts
+              triggerConfetti();
+              specialEffectTriggeredThisRound = true;
+          }
         }
-        //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random)
-        let sorteado = Math.floor(Math.random() * 3);
-        //se o id da <div> escolhida pelo jogador for igual ao número sorteado
-        if (obj.id == sorteado) {
-          //chama a funçao acertou passando a div escolhida pelo jogador
-          acertou(obj);
-          //incrementa o contador de acertos
-          acertos++;
-        } else {//se errou a tentativa
-          //altera a classe da <div> escolhida pelo jogador para a classe errou
-          obj.className = "errou";
-          //armazena a div aonde Smile está escondido (getElementById)
-          const objSorteado = document.getElementById(sorteado);
-          //chama a funçao acertou para mostrar a div aonde está o Smile
-          acertou(objSorteado);
-        }
-        //chama a funçao que atualiza o placar
-        atualizaPlacar(acertos, tentativas);
-      } else {//se o jogador clicar em outra carta sem reiniciar o jogo, recebe um alerta
-        alert('Clique em "Jogar novamente"');
+      } else {
+        // Still playing, "Jogar novamente" should be visible
+        btnJogarNovamente.classList.remove('invisivel');
+        btnJogarNovamente.classList.add('visivel');
+        btnReiniciar.classList.add('invisivel');
+        btnReiniciar.classList.remove('visivel');
       }
     }
 
 //adiciona eventos aos botões
 btnJogarNovamente.addEventListener('click', jogarNovamente);
 btnReiniciar.addEventListener('click', reiniciar);
+
+// Initialize placar on load
+document.addEventListener('DOMContentLoaded', () => {
+    atualizaPlacar(0,0);
+    respostaText.textContent = "Bem-vindo! Tente a sorte.";
+});
