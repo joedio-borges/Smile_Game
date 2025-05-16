@@ -7,31 +7,68 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: rgb(255, 202, 241);
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid rgb(202, 0, 104);
     padding: 10px;
     margin: 20px;
   }
   .acertou {
     text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
+    color: rgb(252, 52, 129);
+    background-color: rgb(255, 156, 184);
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid rgb(255, 0, 115);
     padding: 10px;
     margin: 20px;
   }
   .errou {
     text-align: center;
-    font-size: 100px;
     color: white;
-    background-color: red;
+    background-color: rgb(255, 0, 89);
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px solid rgb(255, 182, 223);
     padding: 10px;
     margin: 20px;
   }
+
+  h1{
+    color:rgb(161, 25, 89);
+    text-shadow: 5px 5px 5px pink;
+  }
+
+  p {
+    color: rgb(161, 25, 89);
+  }
+
+  button {
+    background-color: pink;
+  }
+
+  button:hover{
+    background-color: rgb(255, 185, 210);
+  }
+
+  .inicial:hover {
+    background-color: orange;
+  }
+  
+  body{
+    background-color: beige;
+  }
+
+ .tremor {
+  animation: tremer 0.3s ease-in-out infinite;
+}
+
+@keyframes tremer {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-3px, 2px); }
+  50% { transform: translate(3px, -2px); }
+  75% { transform: translate(-2px, 3px); }
+  100% { transform: translate(0, 0); }
+}
+
