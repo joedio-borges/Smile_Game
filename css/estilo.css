@@ -1,37 +1,55 @@
-.invisivel{
-    display:none;
-  }
-  .visivel{
-    display:inline;
-  }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
-  }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
-    text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
-  }
+.invisivel {
+  display: none;
+}
+
+.visivel {
+  display: inline;
+}
+
+.inicial, .acertou, .errou {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  width: 150px;
+  height: 200px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.inicial {
+  background-color: rgb(233, 112, 223);
+  border: 15px solid rgb(241, 156, 220);
+  color: black;
+}
+
+.acertou {
+  background-color: rgb(33, 168, 168);
+  border: 15px solid rgb(29, 255, 255);
+  color: rgb(35, 252, 252);
+}
+
+.errou {
+  background-color: red;
+  border: 15px solid black;
+  color: rgb(230, 193, 223);
+}
+
+img {
+  margin-top: 10px;
+}
+body {
+  font-family: 'Dancing Script', cursive;
+}
+#resposta {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem; /* aumenta o tamanho da fonte */
+}
+.inicial:hover,
+.acertou:hover,
+.errou:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
