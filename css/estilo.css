@@ -7,31 +7,75 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: rgb(80, 156, 255);
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid rgb(65, 141, 255);
     padding: 10px;
     margin: 20px;
   }
   .acertou {
     text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
+    color: rgb(245, 249, 255);
+    background-color: rgb(148, 191, 255);
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid rgb(124, 165, 252);
     padding: 10px;
     margin: 20px;
   }
   .errou {
     text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
+    font-size: 10px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(159, 143, 255);
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px solid rgb(135, 114, 255);
     padding: 10px;
     margin: 20px;
   }
+
+  h1{
+    text-align: center;
+      font-family: "Cal Sans", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+    
+
+  p{
+    text-align: center;
+  }
+
+  /* Animação de tremor */
+@keyframes tremor {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* Aplica a animação de tremor nas cartas */
+.tremor {
+  animation: tremor 0.5s ease-in-out;
+}
+
+  /* Efeito visual de vitória */
+@keyframes vitoria {
+  0% { transform: scale(1); background-color: rgb(80, 156, 255); }
+  50% { transform: scale(1.1); background-color: rgb(0, 255, 0); }
+  100% { transform: scale(1); background-color: rgb(80, 156, 255); }
+}
+
+/* Aplica o efeito de vitória */
+.vitoria {
+  animation: vitoria 1.5s ease-in-out;
+}
+
+
+ 
+  
+
+  
