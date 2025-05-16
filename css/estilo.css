@@ -10,7 +10,7 @@
     background-color: lightgrey;
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid  #941043;
     padding: 10px;
     margin: 20px;
   }
@@ -35,3 +35,56 @@
     padding: 10px;
     margin: 20px;
   }
+  .mensagem-erro {
+  position: absolute;
+  top: 30%; /* Ajustei a posição para que fique mais centralizado */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  color: red;
+  font-size: 30px; /* Aumentei o tamanho da fonte */
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 8px 16px; /* Aumentei o padding para dar mais espaço ao redor da palavra */
+  border-radius: 8px; /* Aumentei o border-radius para deixar os cantos mais arredondados */
+  pointer-events: none;
+}
+/* Para o título h1 */
+h1 {
+  font-size: 36px;
+  color: #941043;
+  font-family: 'Lobster', sans-serif;
+
+}
+
+/* Para o parágrafo p */
+p {
+  font-family: 'Lobster', sans-serif; /* Fonte diferente para o parágrafo */
+  font-size: 18px;
+  color: #941043;
+}
+button {
+  color: #941043;
+  font-family: 'Courier New', monospace;
+  font-weight: bold; /* Torna a fonte mais grossa */
+  font-weight: 700; 
+}
+body {
+  background-color: #e692de; /* Cor de fundo cinza médio */
+  color: white; /* Cor do texto */
+  font-family: 'Arial', sans-serif; /* Fonte */
+}
+@keyframes tremer {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.tremer {
+  animation: tremer 0.5s;
+}
+#trofeu {
+  width: 100px;
+  margin-top: 10px;
+}

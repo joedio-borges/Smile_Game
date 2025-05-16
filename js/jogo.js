@@ -1,110 +1,148 @@
-    //declaraçao das variaveis globais
-    let desempenho = 0;
-    let tentativas = 0;
-    let acertos = 0;
-    let jogar = true;
+// Declaração das variáveis globais
+let desempenho = 0;
+let tentativas = 0;
+let acertos = 0;
+let jogar = true;
 
-    //captura os botoes pelos ids e adiciona um evento de clique
-    const btnReiniciar = document.getElementById('reiniciar');
-    const btnJogarNovamente = document.getElementById('joganovamente');
+// Captura os botões pelos IDs
+const btnReiniciar = document.getElementById('reiniciar');
+const btnJogarNovamente = document.getElementById('joganovamente');
 
-    //funçao que zera os valores das variáveis controladoras
-    function reiniciar() {
-      desempenho = 0;
-      tentativas = 0;
-      acertos = 0;
-      jogar = true;
-      jogarNovamente();
-      atualizaPlacar(0, 0);
-      //mostra o botao jogarnovamente alterando a classe css (className)
-      btnJogarNovamente.className = 'visivel';
-      //oculta o botao reiniciar alterando a classe css (className)
-      btnReiniciar.className = 'invisivel';
-    }
+// Função que zera os valores das variáveis controladoras
+function reiniciar() {
+  desempenho = 0;
+  tentativas = 0;
+  acertos = 0;
+  jogar = true;
+  removerTrofeu();
+  jogarNovamente();
+  atualizaPlacar(0, 0);
+  btnJogarNovamente.className = 'visivel';
+  btnReiniciar.className = 'invisivel';
+}
 
-    //funçao jogar novamente
-    function jogarNovamente() {
-      jogar = true;//variável jogar volta a ser verdadeira
-      //armazenamos todas as div na variável divis (getElementsByTagName)
-      let divis = document.getElementsByTagName("div");
-      //percorremos todas as divs armazenadas
-      for (i = 0; i < divis.length; i++) {
-        //verificamos se sao as divs com ids 0 ou 1 ou 2
-        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2) {
-          //alteramos a classe css das divs 0, 1 e 2 (className)
-          divis[i].className = "inicial";
-        }
-      }
-
-      //armazenamos a imagem do Smile na variável imagem (getElementById)
-      let imagem = document.getElementById("imagem");
-      //se a imagem nao for vazia (se ela existir)
-      if (imagem != "") {
-        //removemos a imagem do Smile
-        imagem.remove();
+// Função jogar novamente
+function jogarNovamente() {
+  jogar = true;
+  let divis = document.getElementsByTagName("div");
+  for (let i = 0; i < divis.length; i++) {
+    if (["0", "1", "2", "3", "4", "5"].includes(divis[i].id)) {
+      divis[i].className = "inicial";
+      const erroSpan = divis[i].querySelector(".mensagem-erro");
+      if (erroSpan) {
+        erroSpan.remove();
       }
     }
+  }
 
-    //funçao que atualiza o placar
-    function atualizaPlacar(acertos, tentativas) {
-      //calcula o desempenho em porcentagem
-      desempenho = (acertos / tentativas) * 100;
-      //escreve o placar com os valores atualizados (innerHTML)
-      document.getElementById("resposta").innerHTML = "Placar - Acertos: " + acertos + " Tentativas: " + tentativas + " Desempenho: " + Math.round(desempenho) + "%";
+  let imagem = document.getElementById("imagem");
+  if (imagem != null) {
+    imagem.remove();
+  }
 
-    }
+  removerTrofeu();
+}
 
-    //funçao executada quando o jogador acertou
-    function acertou(obj) {
-      //altera a classe CSS da <div> escolhida pelo jogador (className)
-      obj.className = "acertou";
-      //Criar uma constante img que armazena um novo objeto imagem com largura de 100px
-      const img = new Image(100);
-      img.id = "imagem";
-      //altera o atributo src (source) da imagem criada
-      img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
-      //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
-      obj.appendChild(img);
-    }
+// Atualiza o placar
+function atualizaPlacar(acertos, tentativas) {
+  desempenho = (acertos / tentativas) * 100;
+  document.getElementById("resposta").innerHTML =
+    "Placar - Acertos: " + acertos + " Tentativas: " + tentativas + " Desempenho: " + Math.round(desempenho) + "%";
 
-    //Função que sorteia um número aleatório entre 0 e 2 e verifica se o jogador acertou
-    function verifica(obj) {
-      //se jogar é verdadeiro
-      if (jogar) {
-        //jogar passa a ser false
-        jogar = false;
-        //incrementa as tentativas
-        tentativas++;
-        //verifica se jogou 3 vezes
-        if (tentativas == 3) {
-          //oculta o botao joganovamente alterando a classe css (getElementById e className)
-          btnJogarNovamente.className = 'invisivel';
-          //mostra o botao reiniciar alterando a classe css (getElementById e className)
-          btnReiniciar.className = 'visivel';
-        }
-        //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random)
-        let sorteado = Math.floor(Math.random() * 3);
-        //se o id da <div> escolhida pelo jogador for igual ao número sorteado
-        if (obj.id == sorteado) {
-          //chama a funçao acertou passando a div escolhida pelo jogador
-          acertou(obj);
-          //incrementa o contador de acertos
-          acertos++;
-        } else {//se errou a tentativa
-          //altera a classe da <div> escolhida pelo jogador para a classe errou
-          obj.className = "errou";
-          //armazena a div aonde Smile está escondido (getElementById)
-          const objSorteado = document.getElementById(sorteado);
-          //chama a funçao acertou para mostrar a div aonde está o Smile
-          acertou(objSorteado);
-        }
-        //chama a funçao que atualiza o placar
-        atualizaPlacar(acertos, tentativas);
-      } else {//se o jogador clicar em outra carta sem reiniciar o jogo, recebe um alerta
-        alert('Clique em "Jogar novamente"');
+  // Tremor se desempenho for 0 e houver pelo menos uma tentativa
+  if (desempenho === 0 && tentativas > 0) {
+    let cartas = document.querySelectorAll("div[id]");
+    cartas.forEach(carta => {
+      if (["0", "1", "2", "3", "4", "5"].includes(carta.id)) {
+        carta.classList.add("tremer");
+        setTimeout(() => {
+          carta.classList.remove("tremer");
+        }, 500);
       }
+    });
+  }
+
+  // Mostra o troféu apenas se acertar todas as 6 tentativas
+  if (acertos === 6 && tentativas === 6) {
+    mostrarTrofeu();
+  } else {
+    removerTrofeu();
+  }
+}
+
+// Mostra o Smile (sem confetes)
+function mostrarSmile(obj) {
+  obj.className = "acertou";
+  const img = new Image(100);
+  img.id = "imagem";
+  img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
+  obj.appendChild(img);
+}
+
+// Jogador acertou: mostra Smile + confetes
+function acertou(obj) {
+  mostrarSmile(obj);
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+}
+
+// Exibe a mensagem de "ERROU" na carta errada
+function mostrarErro(obj) {
+  const erroSpan = document.createElement("span");
+  erroSpan.textContent = "ERROU";
+  erroSpan.className = "mensagem-erro";
+  obj.appendChild(erroSpan);
+}
+
+// Sorteia um número aleatório e verifica se o jogador acertou
+function verifica(obj) {
+  if (jogar) {
+    jogar = false;
+    tentativas++;
+
+    if (tentativas == 6) {
+      btnJogarNovamente.className = 'invisivel';
+      btnReiniciar.className = 'visivel';
     }
 
-//adiciona eventos aos botões
+    let sorteado = Math.floor(Math.random() * 6);
+    if (obj.id == sorteado) {
+      acertou(obj);
+      acertos++;
+    } else {
+      obj.className = "errou";
+      const objSorteado = document.getElementById(sorteado);
+      mostrarSmile(objSorteado);
+      mostrarErro(obj);
+    }
+
+    atualizaPlacar(acertos, tentativas);
+  } else {
+    alert('Clique em "Jogar novamente"');
+  }
+}
+
+// Mostra troféu se 6 acertos em 6 tentativas
+function mostrarTrofeu() {
+  if (!document.getElementById("trofeu")) {
+    const img = new Image(100);
+    img.id = "trofeu";
+    img.src = "https://cdn-icons-png.flaticon.com/512/2278/2278992.png";
+    document.getElementById("resposta").appendChild(img);
+  }
+}
+
+// Remove troféu se desempenho não for 100% com 6 acertos
+function removerTrofeu() {
+  const trofeu = document.getElementById("trofeu");
+  if (trofeu) {
+    trofeu.remove();
+  }
+}
+
+// Adiciona eventos aos botões
 btnJogarNovamente.addEventListener('click', jogarNovamente);
 btnReiniciar.addEventListener('click', reiniciar);
