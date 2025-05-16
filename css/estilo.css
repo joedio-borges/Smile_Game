@@ -1,37 +1,110 @@
-.invisivel{
-    display:none;
-  }
-  .visivel{
-    display:inline;
-  }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
-  }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
-    text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
-  }
+.invisivel {
+  display: none;
+}
+
+.visivel {
+  display: inline;
+}
+
+h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-shadow: 5px 5px 5px rgb(105, 102, 102);
+  color: rgb(0, 0, 0);
+}
+
+.inicial,
+.acertou,
+.errou {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 150px;
+  height: 200px;
+  border: 11px solid black;
+  padding: 10px;
+  margin: 20px;
+  position: relative;
+  text-align: center;
+  font-size: 40px;
+}
+
+.inicial {
+  background-color: lightgrey;
+}
+
+.inicial:hover {
+  background-color: rgb(172, 171, 171);
+  transform: scale(1.05);
+}
+
+.acertou {
+  background-color: LawnGreen;
+  color: yellow;
+}
+
+.errou {
+  background-color: red;
+}
+
+.inicial img,
+.acertou img,
+.errou img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+/* Placar */
+#resposta {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+/* Botão Jogar Novamente */
+#joganovamente {
+  font-family: Arial, sans-serif;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#joganovamente:hover {
+  background-color: #a7a7a7;
+  transform: scale(1.05);
+}
+
+#reiniciar {
+  font-family: Arial, sans-serif;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#reiniciar:hover {
+  background-color: #a7a7a7 ;
+  transform: scale(1.05);
+}
+
+@keyframes vibrar {
+  0% { transform: translate(0px, 0px); }
+  25% { transform: translate(5px, -5px); }
+  50% { transform: translate(-5px, 5px); }
+  75% { transform: translate(5px, 5px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+body.derrota {
+  animation: vibrar 0.1s infinite;
+}
+
