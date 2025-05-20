@@ -5,33 +5,52 @@
     display:inline;
   }
   .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
-  }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
-    text-align: center;
-    font-size: 100px;
     color: white;
-    background-color: red;
+    text-align: center;
+    font-size: 100px;
+    background-color: blue;
     width: 150px;
     height: 200px;
     border: 15px solid black;
     padding: 10px;
     margin: 20px;
   }
+  .acertou {
+    text-align: center;
+    color: black;
+    background-color: white;
+    width: 150px;
+    height: 200px;
+    border: 15px solid blue;
+    padding: 10px;
+    margin: 20px;
+  }
+  .errou {
+    text-align: center;
+    color: white;
+    background-color: red;
+    width: 150px;
+    height: 200px;
+    border: 15px solid whitesmoke;
+    padding: 10px;
+    margin: 20px;
+  }
+  #titulo{
+    text-align: center;
+  }
+
+  .tomate {
+  position: fixed;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  animation: cair 2s ease-in forwards;
+  z-index: 999;
+}
+
+@keyframes cair {
+  to {
+    top: 100vh;
+    opacity: 0;
+  }
+}
