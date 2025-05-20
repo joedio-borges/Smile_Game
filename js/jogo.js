@@ -22,28 +22,19 @@
       btnReiniciar.className = 'invisivel';
     }
 
-    //funçao jogar novamente
-    function jogarNovamente() {
-      jogar = true;//variável jogar volta a ser verdadeira
-      //armazenamos todas as div na variável divis (getElementsByTagName)
-      let divis = document.getElementsByTagName("div");
-      //percorremos todas as divs armazenadas
-      for (i = 0; i < divis.length; i++) {
-        //verificamos se sao as divs com ids 0 ou 1 ou 2
-        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2) {
-          //alteramos a classe css das divs 0, 1 e 2 (className)
-          divis[i].className = "inicial";
-        }
-      }
-
-      //armazenamos a imagem do Smile na variável imagem (getElementById)
-      let imagem = document.getElementById("imagem");
-      //se a imagem nao for vazia (se ela existir)
-      if (imagem != "") {
-        //removemos a imagem do Smile
-        imagem.remove();
+//funçao jogar novamente
+function jogarNovamente() {
+  jogar = true;
+  let divis = document.getElementsByTagName("div");
+  for (i = 0; i < divis.length; i++) {
+    if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2 || divis[i].id == 3 || divis[i].id == 4 || divis[i].id ==5) {
+      divis[i].className = "inicial";
+      while (divis[i].firstChild) {
+        divis[i].removeChild(divis[i].firstChild);
       }
     }
+  }
+}
 
     //funçao que atualiza o placar
     function atualizaPlacar(acertos, tentativas) {
@@ -62,9 +53,21 @@
       const img = new Image(100);
       img.id = "imagem";
       //altera o atributo src (source) da imagem criada
-      img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
+      //troquei a imagem do smile para um lacinho rosa
+      img.src = "https://images.emojiterra.com/google/noto-emoji/unicode-16.0/color/svg/1f380.svg";
       //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
       obj.appendChild(img);
+    }
+
+    //função errou
+    function errou(obj) {
+      obj.className = "errou";
+      const emojiDark = document.createElement('span');
+      emojiDark.id = "dark_emoji";
+      emojiDark.innerHTML = '💀'; // Ou o emoji escolhido
+      emojiDark.style.fontSize = '80px';
+      emojiDark.style.display = 'block';
+      obj.appendChild(emojiDark);
     }
 
     //Função que sorteia um número aleatório entre 0 e 2 e verifica se o jogador acertou
@@ -76,14 +79,16 @@
         //incrementa as tentativas
         tentativas++;
         //verifica se jogou 3 vezes
-        if (tentativas == 3) {
+        //alterei de 3 tentativas para 6
+        if (tentativas == 6) {
           //oculta o botao joganovamente alterando a classe css (getElementById e className)
           btnJogarNovamente.className = 'invisivel';
           //mostra o botao reiniciar alterando a classe css (getElementById e className)
           btnReiniciar.className = 'visivel';
         }
         //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random)
-        let sorteado = Math.floor(Math.random() * 3);
+        //era 3, mudei para 6
+        let sorteado = Math.floor(Math.random() * 6);
         //se o id da <div> escolhida pelo jogador for igual ao número sorteado
         if (obj.id == sorteado) {
           //chama a funçao acertou passando a div escolhida pelo jogador
@@ -93,10 +98,9 @@
         } else {//se errou a tentativa
           //altera a classe da <div> escolhida pelo jogador para a classe errou
           obj.className = "errou";
-          //armazena a div aonde Smile está escondido (getElementById)
-          const objSorteado = document.getElementById(sorteado);
-          //chama a funçao acertou para mostrar a div aonde está o Smile
-          acertou(objSorteado);
+            errou(obj); // Chamando a nova função
+            const objSorteado = document.getElementById(sorteado);
+            acertou(objSorteado);
         }
         //chama a funçao que atualiza o placar
         atualizaPlacar(acertos, tentativas);

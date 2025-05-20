@@ -4,34 +4,58 @@
   .visivel{
     display:inline;
   }
+  body {
+    background-color: #FFF0F5; /* Rosa bem clarinho */
+  }
   .inicial {
     text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
+    background-color: #FFD1DC; /*mudei as cores para ficar com um visual mais fofo*/
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid #FF69B4;
     padding: 10px;
     margin: 20px;
+    border-radius: 25px; /*arredondamento de bordas*/
   }
   .acertou {
     text-align: center;
     color: yellow;
-    background-color: LawnGreen;
+    background-color: #FF69B4;
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid #DB7093;
     padding: 10px;
     margin: 20px;
+    border-radius: 25px; /*arredondamento de bordas*/
   }
   .errou {
     text-align: center;
-    font-size: 100px;
     color: white;
-    background-color: red;
+    background-color: #333;
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px solid #000;
     padding: 10px;
     margin: 20px;
+    border-radius: 25px; /*arredondamento de bordas*/
   }
+  #joganovamente, #reiniciar {
+    background-color: #FF69B4; /*acrescentei novas formatações para estilizar os botões*/
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+  #joganovamente:hover, #reiniciar:hover {
+    background-color: #DB7093;
+}
+h1{
+  text-align: center;
+}
+p{
+  text-align: center;
+}
