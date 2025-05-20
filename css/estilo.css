@@ -1,8 +1,8 @@
 .invisivel{
-    display:none;
+    display:none !important;
   }
   .visivel{
-    display:inline;
+    display:flex !important;
   }
   .inicial {
     text-align: center;
@@ -13,6 +13,11 @@
     border: 15px solid green;
     padding: 10px;
     margin: 20px;
+    transition: transform 0.2s;
+  }
+  .inicial:hover {
+    transform: scale(1.05);
+    cursor: pointer;
   }
   .acertou {
     text-align: center;
@@ -23,10 +28,12 @@
     border: 15px solid yellow;
     padding: 10px;
     margin: 20px;
+    animation: brilho 0.7s;
+    transition: transform 0.2s;
+    transform: scale(1.05);
   }
   .errou {
     text-align: center;
-    font-size: 100px;
     color: white;
     background-color: red;
     width: 150px;
@@ -34,4 +41,54 @@
     border: 15px solid black;
     padding: 10px;
     margin: 20px;
+    animation: tremer 0.4s;
+    transition: transform 0.2s;
+  }
+  #overlay-jogar-novamente {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(200, 200, 200, 0.3); /* fundo transparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  #overlay-jogar-novamente button,
+  #reiniciar {
+    display: block;
+    margin: 20px auto;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    opacity: 0.9;
+  }
+  body  {
+    position: relative;
+    min-height: 100vh;
+    text-align: center;
+  }
+  body, h1, p, #resposta {
+    text-align: center;
+  }
+  #principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* Efeito ao acertar: animação de brilho */
+  @keyframes brilho {
+    0% { box-shadow: 0 0 0px 0px yellow; }
+    50% { box-shadow: 0 0 40px 20px yellow; }
+    100% { box-shadow: 0 0 0px 0px yellow; }
+  }
+  /* Efeito ao errar: animação de tremer */
+  @keyframes tremer {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
   }

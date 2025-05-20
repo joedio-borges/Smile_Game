@@ -1,4 +1,4 @@
-    //declaraçao das variaveis globais
+//declaraçao das variaveis globais
     let desempenho = 0;
     let tentativas = 0;
     let acertos = 0;
@@ -7,6 +7,7 @@
     //captura os botoes pelos ids e adiciona um evento de clique
     const btnReiniciar = document.getElementById('reiniciar');
     const btnJogarNovamente = document.getElementById('joganovamente');
+    const overlayJogarNovamente = document.getElementById('overlay-jogar-novamente');
 
     //funçao que zera os valores das variáveis controladoras
     function reiniciar() {
@@ -16,33 +17,52 @@
       jogar = true;
       jogarNovamente();
       atualizaPlacar(0, 0);
-      //mostra o botao jogarnovamente alterando a classe css (className)
-      btnJogarNovamente.className = 'visivel';
+      //esconde o botao jogarnovamente alterando a classe css (className)
+      overlayJogarNovamente.className = 'invisivel';
+      //btnJogarNovamente.className = 'invisivel';
       //oculta o botao reiniciar alterando a classe css (className)
-      btnReiniciar.className = 'invisivel';
+      btnReiniciar.classList.add('invisivel');
+
+      // Remove todas as imagens de erro
+      document.querySelectorAll('#imagem-erro').forEach(function(img) {
+        img.remove();
+      });
+
+      // Remove a imagem do Smile, se existir
+      let imagem = document.getElementById("imagem");
+      if (imagem) {
+        imagem.remove();
+      }
     }
 
     //funçao jogar novamente
     function jogarNovamente() {
       jogar = true;//variável jogar volta a ser verdadeira
       //armazenamos todas as div na variável divis (getElementsByTagName)
-      let divis = document.getElementsByTagName("div");
-      //percorremos todas as divs armazenadas
-      for (i = 0; i < divis.length; i++) {
-        //verificamos se sao as divs com ids 0 ou 1 ou 2
-        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2) {
-          //alteramos a classe css das divs 0, 1 e 2 (className)
-          divis[i].className = "inicial";
-        }
+      let cartas = document.querySelectorAll('.inicial, .acertou, .errou');
+      //percorremos todas os objetos com classe inicial, acertou ou errou
+      for (i = 0; i < cartas.length; i++) {
+        //e adicionames a classe inicial e col-4 para cada carta
+        cartas.forEach(function(carta) {
+          carta.className = "inicial";
+        });
       }
+
+      // Remove todas as imagens de erro
+      document.querySelectorAll('#imagem-erro').forEach(function(img) {
+        img.remove();
+      });
 
       //armazenamos a imagem do Smile na variável imagem (getElementById)
       let imagem = document.getElementById("imagem");
       //se a imagem nao for vazia (se ela existir)
-      if (imagem != "") {
+      if (imagem) {
         //removemos a imagem do Smile
         imagem.remove();
       }
+      // Esconde o overlay ao clicar no botão
+      overlayJogarNovamente.className = 'invisivel';
+      btnReiniciar.classList.add('visivel'); // Mostra o botão reiniciar ao reiniciar o jogo
     }
 
     //funçao que atualiza o placar
@@ -75,15 +95,8 @@
         jogar = false;
         //incrementa as tentativas
         tentativas++;
-        //verifica se jogou 3 vezes
-        if (tentativas == 3) {
-          //oculta o botao joganovamente alterando a classe css (getElementById e className)
-          btnJogarNovamente.className = 'invisivel';
-          //mostra o botao reiniciar alterando a classe css (getElementById e className)
-          btnReiniciar.className = 'visivel';
-        }
         //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random)
-        let sorteado = Math.floor(Math.random() * 3);
+        let sorteado = Math.floor(Math.random() * 9);
         //se o id da <div> escolhida pelo jogador for igual ao número sorteado
         if (obj.id == sorteado) {
           //chama a funçao acertou passando a div escolhida pelo jogador
@@ -93,6 +106,11 @@
         } else {//se errou a tentativa
           //altera a classe da <div> escolhida pelo jogador para a classe errou
           obj.className = "errou";
+          // Adiciona a imagem de erro na carta escolhida
+          const imgErro = new Image(100);
+          imgErro.src = "./imagens/errou.png";
+          imgErro.id = "imagem-erro";
+          obj.appendChild(imgErro);
           //armazena a div aonde Smile está escondido (getElementById)
           const objSorteado = document.getElementById(sorteado);
           //chama a funçao acertou para mostrar a div aonde está o Smile
@@ -100,11 +118,18 @@
         }
         //chama a funçao que atualiza o placar
         atualizaPlacar(acertos, tentativas);
+        //mostra o overlay de jogar novamente alterando a classe css (getElementById e className)
+        overlayJogarNovamente.className = 'visivel';
+        //verifica se jogou 3 vezes
+        if (tentativas == 3) {
+          // Mostra o botão reiniciar após o terceiro clique
+          btnReiniciar.classList.remove('invisivel');
+        }
       } else {//se o jogador clicar em outra carta sem reiniciar o jogo, recebe um alerta
         alert('Clique em "Jogar novamente"');
       }
     }
 
 //adiciona eventos aos botões
-btnJogarNovamente.addEventListener('click', jogarNovamente);
-btnReiniciar.addEventListener('click', reiniciar);
+  btnJogarNovamente.addEventListener('click', jogarNovamente);
+  btnReiniciar.addEventListener('click', reiniciar);

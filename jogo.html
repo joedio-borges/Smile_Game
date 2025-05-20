@@ -11,25 +11,39 @@
 </head>
 
 <body>
+  <!-- Overlay do botão jogar novamente -->
+  <div id="overlay-jogar-novamente" class="invisivel">
+    <button id="joganovamente">Jogar novamente</button>
+  </div>
 
     <div id="principal" class="container-fluid">
         <h1>Aonde está o Smile?</h1>
         <p>Tente adivinhar aonde está o Sorriso.</p>
-  
+
       <div id="linha1" class="row justify-content-center">
-        <div id="0" class="inicial" onclick="verifica(this)">0</div>
-        <div id="1" class="inicial" onclick="verifica(this)">1</div>
-        <div id="2" class="inicial" onclick="verifica(this)">2</div>
+        <div id="0" class="inicial col-4" onclick="verifica(this)">0</div>
+        <div id="1" class="inicial col-4" onclick="verifica(this)">1</div>
+        <div id="2" class="inicial col-4" onclick="verifica(this)">2</div>
+      </div>
+      <div id="linha2" class="row justify-content-center">
+        <div id="3" class="inicial col-4" onclick="verifica(this)">3</div>
+        <div id="4" class="inicial col-4" onclick="verifica(this)">4</div>
+        <div id="5" class="inicial col-4" onclick="verifica(this)">5</div>
+      </div>
+      <div id="linha3" class="row justify-content-center">
+        <div id="6" class="inicial col-4" onclick="verifica(this)">6</div>
+        <div id="7" class="inicial col-4" onclick="verifica(this)">7</div>
+        <div id="8" class="inicial col-4" onclick="verifica(this)">8</div>
       </div>
       <div class="row justify-content-center" id="div1">
-        <p id="resposta"></p>
-        <button id="joganovamente">Jogar  de novamente</button>
-        <button id="reiniciar" class="invisivel">Reiniciar</button>
+        <div class="col-12 text-center">
+          <p id="resposta"></p>
+          <button id="reiniciar" class="mt-2 invisivel">Reiniciar</button>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script> 
-    <script src="./js/jogo.js"></script>
-  </body>
+      <script src="./js/jogo.js"></script>
+    </body>
 </html>
