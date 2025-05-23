@@ -1,4 +1,4 @@
-.invisivel{
+  .invisivel{
     display:none;
   }
   .visivel{
@@ -6,32 +6,60 @@
   }
   .inicial {
     text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
+    font-size: 75px;
+    color: black;
+    background-color: rgba(207, 0, 159, 0.904);
+    width: 125px;
+    height: 175px;
+    border: 8px solid rgb(0, 0, 0);
+    border-radius: 20px;
     padding: 10px;
     margin: 20px;
   }
+  .inicial:hover {
+    transform: scale(1.1);
+  }
   .acertou {
     text-align: center;
+    font-size: 0px;
     color: yellow;
     background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
+    width: 125px;
+    height: 175px;
+    border: 8px solid rgb(0, 0, 0);
+    border-radius: 20px;
     padding: 10px;
     margin: 20px;
   }
   .errou {
     text-align: center;
-    font-size: 100px;
+    font-size: 0px;
     color: white;
     background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
+    width: 125px;
+    height: 175px;
+    border: 8px solid rgb(0, 0, 0);
+    border-radius: 20px;
     padding: 10px;
     margin: 20px;
+  }
+  #joganovamente {
+    border-radius: 5px;
+    width: 50%;
+  }
+  #joganovamente:hover {
+    transform: scale(1.1);
+  }
+  #reiniciar {
+    border-radius: 5px;
+    width: 50%;
+  }
+  #reiniciar:hover {
+    transform: scale(1.1);
+  }
+  .titulo {
+    text-align: center;
+  }
+  #resposta {
+    text-align: center;
   }
