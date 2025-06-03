@@ -15,25 +15,12 @@ function iniciarJogo() {
     cardComSmile = Math.floor(Math.random() * 6) + 1;
     jogar = true;
     atualizarPlacar();
-    btnJogarNovamente.classList.add('invisivel');
-    btnReiniciar.classList.add('invisivel');
-    
+    atualizarBotoes(false, false);
+
     // Reseta todos os cards com animação
     document.querySelectorAll('.game-card').forEach((card, index) => {
-        card.className = 'game-card';
-        const img = card.querySelector('img');
-        if (img) img.remove();
-        
-        // Restaura o número original
-        card.textContent = card.id;
-        
-        // Adiciona animação de flip para cada card
-        setTimeout(() => {
-            card.style.animation = 'flipIn 0.5s ease';
-            setTimeout(() => {
-                card.style.animation = '';
-            }, 500);
-        }, index * 100);
+        resetarCard(card);
+        setTimeout(() => animarFlip(card), index * 100);
     });
 }
 
@@ -43,20 +30,42 @@ function atualizarPlacar() {
     resposta.textContent = `🎯 Acertos: ${acertos} | 🎲 Rodadas: ${rodadas}/5 | 📊 Desempenho: ${porcentagem}%`;
 }
 
+// Atualiza visibilidade dos botões
+function atualizarBotoes(jogarNovamenteVisivel, reiniciarVisivel) {
+    btnJogarNovamente.classList.toggle('invisivel', !jogarNovamenteVisivel);
+    btnReiniciar.classList.toggle('invisivel', !reiniciarVisivel);
+}
+
+// Animação de flip
+function animarFlip(elemento) {
+    elemento.style.animation = 'flipIn 0.5s ease';
+    setTimeout(() => {
+        elemento.style.animation = '';
+    }, 500);
+}
+
+// Reseta um card individualmente
+function resetarCard(card) {
+    card.className = 'game-card';
+    const img = card.querySelector('img');
+    if (img) img.remove();
+    card.textContent = card.id;
+}
+
 // Mostra o smile no card
 function mostrarSmile(card) {
     card.classList.add('acertou');
     const img = document.createElement('img');
     img.src = 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg';
+    img.alt = 'Smile';
     img.style.width = '80%';
     img.style.height = '80%';
-    img.alt = 'Smile';
-    img.style.animation = 'flipIn 0.5s ease';
     card.textContent = '';
     card.appendChild(img);
-    
+    animarFlip(img);
+
     // Efeito de confete ao acertar
-    if (card.id === cardComSmile.toString()) {
+    if (parseInt(card.id) === cardComSmile) {
         criarConfete();
     }
 }
@@ -65,17 +74,18 @@ function mostrarSmile(card) {
 function criarConfete() {
     const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800', '#FF5722'];
     
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
         confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.top = -10 + 'px';
+        confetti.style.top = '-10px';
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.width = Math.random() * 10 + 5 + 'px';
-        confetti.style.height = Math.random() * 10 + 5 + 'px';
-        confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
+        confetti.style.opacity = '1';
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+
         document.body.appendChild(confetti);
-        
+
         // Remove o confete após a animação
         setTimeout(() => {
             confetti.remove();
@@ -94,14 +104,10 @@ function verifica(cardClicado) {
     const idCardClicado = parseInt(cardClicado.id);
 
     if (idCardClicado === cardComSmile) {
-        // Acertou
         acertos++;
         mostrarSmile(cardClicado);
     } else {
-        // Errou
         cardClicado.classList.add('errou');
-        
-        // Mostra onde estava o smile após 500ms
         setTimeout(() => {
             const cardCorreto = document.getElementById(cardComSmile.toString());
             mostrarSmile(cardCorreto);
@@ -110,13 +116,11 @@ function verifica(cardClicado) {
 
     jogar = false;
     atualizarPlacar();
-    
-    // Verifica se atingiu 5 rodadas
+
     if (rodadas >= 5) {
-        btnJogarNovamente.classList.add('invisivel');
-        btnReiniciar.classList.remove('invisivel');
+        atualizarBotoes(false, true);
     } else {
-        btnJogarNovamente.classList.remove('invisivel');
+        atualizarBotoes(true, false);
     }
 }
 
