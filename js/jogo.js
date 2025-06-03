@@ -15,7 +15,7 @@ function reiniciar() {
   acertos = 0;
   jogar = true;
   jogarNovamente();
-  atualizaPlacar(0, 0);
+  atualizaPlacar();
   btnJogarNovamente.className = 'visivel botao';
   btnReiniciar.className = 'invisivel';
 }
@@ -33,28 +33,21 @@ function jogarNovamente() {
       div.className = "inicial";
 
       // Remove imagens de acerto (Smile) ou erro (X) caso existam
-      let imagem = div.querySelector("#imagem");
-      if (imagem) {
-        imagem.remove();
-      }
+     ["#imagem", "#imagemErro"].forEach(selector => {
+        const img = div.querySelector(selector);
+        if (img) img.remove();
+      });
 
-      let imagemErro = div.querySelector("#imagemErro");
-      if (imagemErro) {
-        imagemErro.remove();
-      }
     }
   }
 }
 
 // Atualiza o placar com acertos, tentativas e desempenho
-function atualizaPlacar(acertos, tentativas) {
+  function atualizaPlacar() {
   desempenho = (acertos / tentativas) * 100;
   document.getElementById("resposta").innerHTML =
-    "Placar - Acertos: " + acertos +
-    " Tentativas: " + tentativas +
-    " Desempenho: " + Math.round(desempenho) + "%";
+    `Placar - Acertos: ${acertos} Tentativas: ${tentativas} Desempenho: ${Math.round(desempenho)}%`;
 }
-
 // Função chamada quando o jogador acerta
 function acertou(obj) {
   obj.className = "acertou";
@@ -101,7 +94,7 @@ function verifica(obj) {
       acertou(objSorteado);
     }
 
-    atualizaPlacar(acertos, tentativas);
+    atualizaPlacar();
   } else {
     alert('Clique em "Jogar novamente"');
   }
