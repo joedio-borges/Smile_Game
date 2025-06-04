@@ -1,5 +1,5 @@
 // Quantidade de cartas
-const TOTAL_CARTAS = 8;
+const TOTAL_CARTAS = 5;
 
 // Variáveis globais
 let desempenho = 0;
@@ -15,7 +15,7 @@ document.body.style.padding = "30px";
 
 // Botões
 const btnReiniciar = document.getElementById("reiniciar");
-const btnJogarNovamente = document.getElementById("joganovamente");
+const btnJogarNovamente = document.getElementById("jogarnovamente");
 
 // Estilo dos botões
 [btnReiniciar, btnJogarNovamente].forEach((btn) => {
@@ -55,20 +55,17 @@ function jogarNovamente() {
   for (let i = 0; i < TOTAL_CARTAS; i++) {
     const carta = document.getElementById(i.toString());
     if (carta) {
-      carta.className = "carta";
-      carta.style.backgroundColor = "#ffffff";
-      carta.style.border = "2px solid #00acc1";
-      carta.style.borderRadius = "16px";
-      carta.style.display = "inline-block";
-      carta.style.width = "80px";
-      carta.style.height = "80px";
-      carta.style.lineHeight = "80px";
-      carta.style.margin = "10px";
-      carta.style.fontSize = "24px";
-      carta.style.fontWeight = "bold";
-      carta.style.color = "#00acc1";
+      carta.className = "inicial"
+      carta.style.backgroundColor = "#d3d3d3";
+      carta.style.textAlign = "center";
+      carta.style.fontsize = "50px";
+      carta.style.width = "150px";
+      carta.style.height = "200px";
+      carta.style.border = "15px solid green";
+      carta.style.padding = "10px";
+      carta.style.margin = "20px";
       carta.style.transition = "all 0.3s ease";
-      carta.innerHTML = ""; // carta "vazia"
+      carta.innerHTML = i; // carta "vazia"
     }
   }
 
@@ -100,7 +97,7 @@ function verifica(obj) {
     jogar = false;
     tentativas++;
 
-    if (tentativas === 3) {
+    if (tentativas === TOTAL_CARTAS) {
       btnJogarNovamente.style.display = "none";
       btnReiniciar.style.display = "inline-block";
     }
@@ -110,7 +107,7 @@ function verifica(obj) {
 
     atualizaPlacar(acertos, tentativas);
 
-    if (acertos === 3) {
+    if (acertos === TOTAL_CARTAS) {
       const som = document.getElementById("somVitoria");
       if (som) som.play();
       animarConfete();
