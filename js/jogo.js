@@ -8,8 +8,27 @@ document.addEventListener("DOMContentLoaded", function () {
   // Captura os botões pelos IDs e adiciona um evento de clique
   const btnReiniciar = document.getElementById("reiniciar");
   const btnJogarNovamente = document.getElementById("jogarnovamente");
+  const resposta = document.getElementById("resposta");
 
-  // Função que zera os valores das variáveis controladoras
+  const divIds = [0, 1, 2, 3];
+  const imgConfig = {
+    et: "et.png",
+    confete: "confetes.gif"
+  };
+
+  function toggleBotao(botao, visivel) {
+    botao.className = visivel ? "visivel" : "invisivel";
+  }
+
+  function resetDiv(div) {
+    div.className = "inicial";
+
+    const imagem = div.querySelector("#imagem");
+    if (imagem) imagem.remove();
+
+    div.querySelectorAll(`img[src="${imgConfig.confete}"]`).forEach(el => el.remove());
+  }
+
   function reiniciar() {
     desempenho = 0;
     tentativas = 0;
@@ -44,71 +63,66 @@ document.addEventListener("DOMContentLoaded", function () {
   // Função que atualiza o placar
   function atualizaPlacar(acertos, tentativas) {
     desempenho = tentativas > 0 ? (acertos / tentativas) * 100 : 0;
-    document.getElementById("resposta").innerHTML =
-      "Placar - Acertos: " +
-      acertos +
-      " Tentativas: " +
-      tentativas +
-      " Desempenho: " +
-      Math.round(desempenho) +
-      "%";
+    resposta.innerHTML = `Placar - Acertos: ${acertos} Tentativas: ${tentativas} Desempenho: ${Math.round(desempenho)}%`;
   }
 
-  // Função executada quando o jogador acertou
-  function acertou(obj) {
-    obj.className = "acertou";
+  function adicionarImagem(div, src, id = "") {
+    const img = new Image(100);
+    if (id) img.id = id;
+    img.src = src;
+    img.classList.add("imagem-de-jogo");  // Se quiser personalizar no CSS
 
-    // Verifica se a imagem do ET já existe, caso contrário, cria a imagem
-    if (!obj.querySelector("#imagem")) {
-      const img = new Image(100);
-      img.id = "imagem";
-      img.src = "et.png"; // Ajuste o caminho da imagem do ET
-      obj.appendChild(img);
-    }
-
-    // Verifica se o confete já foi adicionado à carta
-    if (!obj.querySelector('img[src="confetes.gif"]')) {
-      const confete = new Image();
-      confete.src = "confetes.gif"; // Ajuste o caminho do confete
-      confete.style.position = "absolute";
-      confete.style.top = "0";
-      confete.style.left = "0";
-      confete.style.width = "100px";
-      confete.style.pointerEvents = "none";
-      obj.appendChild(confete);
-    }
+    div.appendChild(img);
   }
 
-  // Função que sorteia um número aleatório entre 0 e 3 e verifica se o jogador acertou
-  window.verifica = function (obj) {
-    if (jogar) {
-      jogar = false;
-      tentativas++;
-      if (tentativas == 3) {
-        btnJogarNovamente.className = "invisivel";
-        btnReiniciar.className = "visivel";
-      }
+  function adicionarConfete(div) {
+  if (!div.querySelector('.confete')) {
+    const confete = new Image();
+    confete.src = imgConfig.confete;
+    confete.classList.add("confete");
+    div.appendChild(confete);
+  }
+}
 
-      let sorteado = Math.floor(Math.random() * 4);
-      if (obj.id == sorteado) {
-        acertou(obj);
-        acertos++;
-      } else {
-        obj.className = "errou";
-        const objSorteado = document.getElementById(sorteado);
-        acertou(objSorteado);
-      }
+function acertou(div) {
+  div.className = "acertou";
 
-      atualizaPlacar(acertos, tentativas);
-    } else {
+  if (!div.querySelector("#imagem")) {
+    adicionarImagem(div, imgConfig.et, "imagem");
+  }
+
+  adicionarConfete(div);  // Agora separado e estilizado
+}
+
+  window.verifica = function (div) {
+    if (!jogar) {
       alert('Clique em "Jogar novamente"');
+      return;
     }
+
+    jogar = false;
+    tentativas++;
+
+    if (tentativas === 3) {
+      toggleBotao(btnJogarNovamente, false);
+      toggleBotao(btnReiniciar, true);
+    }
+
+    const sorteado = Math.floor(Math.random() * divIds.length);
+
+    if (parseInt(div.id) === sorteado) {
+      acertou(div);
+      acertos++;
+    } else {
+      div.className = "errou";
+      acertou(document.getElementById(sorteado));
+    }
+
+    atualizaPlacar();
   };
 
-  // Adiciona eventos aos botões
   btnJogarNovamente.addEventListener("click", reiniciar);
   btnReiniciar.addEventListener("click", reiniciar);
 
-  // Inicializa o placar ao carregar
-  atualizaPlacar(0, 0);
+  atualizaPlacar();
 });

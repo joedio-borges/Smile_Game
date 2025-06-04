@@ -1,10 +1,6 @@
-@font-face {
-  font-family: 'BestTime';
-  src: url('../fonts/Starborn.ttf') format('truetype');
-}
 
 body {
-  font-family: 'BestTime', sans-serif;
+   font-family: 'Arial', sans-serif; 
   background-image: url('../img/galaxia.jpg');
   background-size: cover;
   background-position: center;
@@ -14,6 +10,17 @@ body {
   padding: 0;
   text-align: center;
 }
+
+.confete {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5; /* acima da carta */
+}
+
 
 
 /* Estilo das cartas iniciais */
