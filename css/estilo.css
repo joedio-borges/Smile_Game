@@ -70,11 +70,10 @@ h1 {
 }
 
 .acertou {
-  /* Inherits from .game-card */
-  background-color: #A8E6CF; /* Light Mint/Teal */
-  border-color: #36A2EB; /* Blue */
-  color: #ffffff; /* Icon color */
-  font-size: clamp(50px, 12vw, 80px); /* Larger icon */
+  background-color: #A8E6CF;
+  border-color: #36A2EB;
+  color: #ffffff;
+  font-size: clamp(50px, 12vw, 80px);
 }
 
 .acertou .fa-check-circle {
@@ -82,11 +81,10 @@ h1 {
 }
 
 .errou {
-  /* Inherits from .game-card */
-  background-color: #FF8A80; /* Soft Red */
-  border-color: #D32F2F; /* Darker Red */
-  color: #ffffff; /* Icon color */
-  font-size: clamp(50px, 12vw, 80px); /* Larger icon */
+  background-color: #FF8A80;
+  border-color: #D32F2F;
+  color: #ffffff;
+  font-size: clamp(50px, 12vw, 80px);
 }
 
 .errou .fa-times-circle {

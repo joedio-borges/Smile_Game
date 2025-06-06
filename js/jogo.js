@@ -42,20 +42,9 @@
         card.innerHTML = card.id; // Show number
       });
 
-      // Manage button visibility based on game progression
-      if (tentativas < MIN_TENTATIVAS_FIM_JOGO) {
-          btnJogarNovamente.classList.remove('invisivel');
-          btnJogarNovamente.classList.add('visivel');
-          btnReiniciar.classList.add('invisivel');
-          btnReiniciar.classList.remove('visivel');
-      } else {
-        // If MIN_TENTATIVAS_FIM_JOGO is met, "Reiniciar" should be visible
-        // This logic might be slightly redundant if `verifica` handles it, but good for explicit state
-        btnJogarNovamente.classList.add('invisivel');
-        btnJogarNovamente.classList.remove('visivel');
-        btnReiniciar.classList.remove('invisivel');
-        btnReiniciar.classList.add('visivel');
-      }
+btnJogarNovamente.classList.toggle('invisivel', tentativas >= MIN_TENTATIVAS_FIM_JOGO);
+btnReiniciar.classList.toggle('invisivel', tentativas < MIN_TENTATIVAS_FIM_JOGO);
+
       respostaText.textContent = "Escolha um quadrado!"; // Prompt user for next turn
       if (tentativas > 0) { // Keep showing score if game has started
           atualizaPlacar(acertos, tentativas);
