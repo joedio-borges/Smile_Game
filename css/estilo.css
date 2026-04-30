@@ -1,37 +1,118 @@
-.invisivel{
-    display:none;
-  }
-  .visivel{
-    display:inline;
-  }
-  .inicial {
+body {
+    background-color: #fff9fb; /* Um off-white rosado muito leve */
+    font-family: 'Poppins', sans-serif;
+    color: #4a4a4a;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #2c2c2c;
+}
+
+.highlight {
+    color: #d4af37; /* Dourado */
+    font-style: italic;
+}
+
+.subtitle {
+    font-style: italic;
+    color: #888;
+}
+
+.credits {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: #bbb;
+}
+
+/* Cartão Inicial - Elegância Minimalista */
+.inicial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
     text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
-  }
-  .acertou {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    color: #d4af37;
+    background-color: #ffffff;
+    width: 140px;
+    height: 180px;
+    border: 2px solid #f0e0e5;
+    border-radius: 10px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.inicial:hover {
+    transform: translateY(-10px);
+    border-color: #ffb6c1;
+    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3);
+}
+
+/* Acertou - Glamour Rosa Choque e Dourado */
+.acertou {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    width: 140px;
+    height: 180px;
+    border: 5px double #ffd700;
+    border-radius: 10px;
+    margin: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+/* Errou - Escândalo e Drama (Preto e Bordô) */
+.errou {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    font-size: 100px;
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    color: #d4af37;
+    background-color: #1a1a1a;
+    width: 140px;
+    height: 180px;
+    border: 3px solid #8b0000;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+/* Botões Estilizados */
+.btn-gossip {
+    background-color: #2c2c2c;
     color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
-  }
+    border: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-gossip:hover {
+    background-color: #ff69b4;
+    letter-spacing: 2px;
+}
+
+.invisivel {
+    display: none !important;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
