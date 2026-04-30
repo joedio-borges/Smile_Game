@@ -1,37 +1,50 @@
-.invisivel{
-    display:none;
-  }
-  .visivel{
-    display:inline;
-  }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
-  }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
-    text-align: center;
-    font-size: 100px;
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.card-jogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 60px;
+    font-weight: bold;
+
+    width: 140px;
+    height: 180px;
+
+    margin: 15px;
+    border-radius: 15px;
+
+    background: linear-gradient(145deg, #2c2c2c, #3a3a3a);
     color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
-  }
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    box-shadow: 5px 5px 15px #000;
+}
+
+.card-jogo:hover {
+    transform: scale(1.1);
+    background: #444;
+}
+
+.acertou {
+    background: linear-gradient(145deg, #28a745, #5cd65c);
+    border: 3px solid yellow;
+}
+
+.errou {
+    background: linear-gradient(145deg, #dc3545, #ff6666);
+    border: 3px solid black;
+}
+
+.invisivel {
+    display: none;
+}
+
+#resposta {
+    font-size: 18px;
+    margin-bottom: 15px;
+}

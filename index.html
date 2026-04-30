@@ -10,27 +10,38 @@
     <link rel="stylesheet" href="./css/estilo.css">
 </head>
 
-<body>
+<body class="bg-dark text-light">
 
-    <div id="principal" class="container-fluid">
-        <h1>Aonde está o Smile?</h1>
-        <p>Tente adivinhar aonde está o Sorriso.</p>
-        <p>by: Joédio Borges Jr.</p>
-  
-      <div id="linha1" class="row justify-content-center">
-        <div id="0" class="inicial" onclick="verifica(this)">0</div>
-        <div id="1" class="inicial" onclick="verifica(this)">1</div>
-        <div id="2" class="inicial" onclick="verifica(this)">2</div>
-      </div>
-      <div class="row justify-content-center" id="div1">
-        <p id="resposta"></p>
-        <button id="joganovamente">Jogar  de novamente</button>
-        <button id="reiniciar" class="invisivel">Reiniciar</button>
-      </div>
+<div id="principal" class="container text-center mt-5">
+
+    <h1 class="mb-3">🎯 Onde está o Smile?</h1>
+    <p class="text-secondary">Tente adivinhar onde está o sorriso 😄</p>
+
+    <div id="linha1" class="row justify-content-center mt-4">
+        <div id="0" class="card-jogo" onclick="verifica(this)">?</div>
+        <div id="1" class="card-jogo" onclick="verifica(this)">?</div>
+        <div id="2" class="card-jogo" onclick="verifica(this)">?</div>
+        <div id="3" class="card-jogo" onclick="verifica(this)">?</div>
+        <div id="4" class="card-jogo" onclick="verifica(this)">?</div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"></script> 
-    <script src="./js/jogo.js"></script>
-  </body>
+
+    <div class="mt-4">
+        <p id="resposta" class="fw-bold"></p>
+
+        <button id="joganovamente" class="btn btn-primary me-2">
+            Jogar novamente
+        </button>
+
+        <button id="reiniciar" class="btn btn-danger invisivel">
+            Reiniciar
+        </button>
+    </div>
+
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55MRSYUQD7QlIFrDQyujzgXe+nXOR" crossorigin="anonymous"></script>
+<!-- Script do jogo -->
+<script src="./js/jogo.js"></script>
+</body>
 </html>
