@@ -35,3 +35,41 @@
     padding: 10px;
     margin: 20px;
   }
+    body {
+      background-color: lightblue;
+      text-align: center;
+    }
+  
+    .inicial {
+      text-align: center;
+      font-size: 60px;
+      color: white;
+      background-color: darkblue;
+      width: 120px;
+      height: 160px;
+      border: 5px solid navy;
+      padding: 10px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  
+    .acertou {
+      text-align: center;
+      background-color: green;
+      border: 5px solid yellow;
+    }
+  
+    .errou {
+      text-align: center;
+      color: white;
+      background-color: red;
+      border: 5px solid black;
+    }
+  
+    .invisivel {
+      display: none;
+    }
+  
+    .visivel {
+      display: inline;
+    }
