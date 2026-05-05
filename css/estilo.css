@@ -7,12 +7,13 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: rgb(0, 0, 0);
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid rgb(128, 0, 0);
     padding: 10px;
     margin: 20px;
+    border-radius: 20px;
   }
   .acertou {
     text-align: center;
@@ -23,6 +24,7 @@
     border: 15px solid yellow;
     padding: 10px;
     margin: 20px;
+    border-radius: 20px;
   }
   .errou {
     text-align: center;
@@ -34,4 +36,5 @@
     border: 15px solid black;
     padding: 10px;
     margin: 20px;
+    border-radius: 20px;
   }
