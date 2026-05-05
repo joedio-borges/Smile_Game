@@ -1,118 +1,153 @@
 body {
-    background-color: #fff9fb; /* Um off-white rosado muito leve */
-    font-family: 'Poppins', sans-serif;
-    color: #4a4a4a;
+    background-color: #d4e9fe;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
 }
 
 h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    letter-spacing: -1px;
-    color: #2c2c2c;
-}
-
-.highlight {
-    color: #d4af37; /* Dourado */
-    font-style: italic;
-}
-
-.subtitle {
-    font-style: italic;
-    color: #888;
-}
-
-.credits {
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    color: #bbb;
-}
-
-/* Cartão Inicial - Elegância Minimalista */
-.inicial {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #2c3e50;
     text-align: center;
-    font-family: 'Playfair Display', serif;
+}
+
+#resposta {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 20px 0;
+    min-height: 1.5em;
+}
+
+/* Utilitários */
+.invisivel { display: none; }
+.visivel { display: inline-block; }
+
+/* Estilo Base dos Cards */
+.inicial, .acertou, .errou {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 200px;
+    margin: 15px;
     font-size: 60px;
-    color: #d4af37;
-    background-color: #ffffff;
-    width: 140px;
-    height: 180px;
-    border: 2px solid #f0e0e5;
-    border-radius: 10px;
-    margin: 10px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    user-select: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .inicial:hover {
     transform: translateY(-10px);
-    border-color: #ffb6c1;
-    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
 }
 
-/* Acertou - Glamour Rosa Choque e Dourado */
+/* Estados */
+.inicial {
+    background-color: #ffffff;
+    border: 4px solid #dee2e6;
+    color: #ced4da;
+}
+
 .acertou {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 60px;
-    color: #ffffff;
-    background: linear-gradient(135deg, #ff69b4, #ff1493);
-    width: 140px;
-    height: 180px;
-    border: 5px double #ffd700;
-    border-radius: 10px;
-    margin: 10px;
-    animation: pulse 1.5s infinite;
-}
-
-/* Errou - Escândalo e Drama (Preto e Bordô) */
-.errou {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 60px;
-    color: #d4af37;
-    background-color: #1a1a1a;
-    width: 140px;
-    height: 180px;
-    border: 3px solid #8b0000;
-    border-radius: 10px;
-    margin: 10px;
-}
-
-/* Botões Estilizados */
-.btn-gossip {
-    background-color: #2c2c2c;
+    background-color: #2ecc71;
+    border: 8px solid #f1c40f;
     color: white;
-    border: none;
+}
+
+.errou {
+    background-color: #e74c3c;
+    border: 8px solid #2c3e50;
+    color: white;
+}
+
+/* Botões Customizados */
+button {
     padding: 10px 25px;
-    border-radius: 50px;
+    border-radius: 8px;
+    font-weight: bold;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.2s;
+}
+button {
+    /* Diminuindo o preenchimento (o primeiro valor é cima/baixo, o segundo é lados) */
+    padding: 5px 15px; 
+    
+    /* Diminuindo o tamanho da letra */
+    font-size: 14px; 
+    
+    border-radius: 6px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.2s;
 }
 
-.btn-gossip:hover {
-    background-color: #ff69b4;
-    letter-spacing: 2px;
+#joganovamente {
+    background-color: #3498db;
+    color: white;
 }
 
-.invisivel {
-    display: none !important;
+#joganovamente:hover { background-color: #2980b9; }
+
+#reiniciar {
+    background-color: #95a5a6;
+    color: white;
+}
+/* Estilo geral para os parágrafos (p) */
+p {
+    color: #6a7576; /* Um cinza suave para não brigar com o título */
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+    text-align: center;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+/* Estilo específico para o "by: Joédio" (subtítulo) */
+p:last-of-type {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #363636;
+    margin-bottom: 25px;
+    text-align: center ;
+}
+
+/* Estilização do Placar (id="resposta") */
+#resposta {
+    background: #ffffff;
+    color: #2c3e50;
+    display: inline-block; /* Faz o fundo envolver apenas o texto */
+    padding: 12px 25px;
+    border-radius: 50px; /* Formato de pílula */
+    border: 2px solid #e0e0e0;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin: 20px 0;
+}
+
+/* Efeito de destaque para quando o placar atualizar */
+#resposta:not(:empty) {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Container dos botões e do placar */
+#div1 {
+    display: flex;
+    flex-direction: column; /* Coloca o placar em cima e os botões embaixo */
+    align-items: center;    /* Centraliza horizontalmente */
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
 }
