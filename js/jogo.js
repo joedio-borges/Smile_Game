@@ -42,6 +42,7 @@
       if (imagem != "") {
         //removemos a imagem do Smile
         imagem.remove();
+        img.remove();
       }
     }
 
@@ -93,6 +94,13 @@
         } else {//se errou a tentativa
           //altera a classe da <div> escolhida pelo jogador para a classe errou
           obj.className = "errou";
+            //Criar uma constante img que armazena um novo objeto imagem com largura de 100px
+          const img = new Image(100);
+          img.id = "img";
+          //altera o atributo src (source) da imagem criada
+          img.src = "./images/hisoka.jpg";
+          //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
+          obj.appendChild(img);
           //armazena a div aonde Smile está escondido (getElementById)
           const objSorteado = document.getElementById(sorteado);
           //chama a funçao acertou para mostrar a div aonde está o Smile
