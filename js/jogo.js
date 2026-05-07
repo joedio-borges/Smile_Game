@@ -62,7 +62,7 @@
       const img = new Image(100);
       img.id = "imagem";
       //altera o atributo src (source) da imagem criada
-      img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
+      img.src = "./img/smile.png";
       //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
       obj.appendChild(img);
     }
@@ -83,7 +83,7 @@
           btnReiniciar.className = 'visivel';
         }
         //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random)
-        let sorteado = Math.floor(Math.random() * 5);
+        let sorteado = Math.floor(Math.random() * 5) + 1;
         //se o id da <div> escolhida pelo jogador for igual ao número sorteado
         if (obj.id == sorteado) {
           //chama a funçao acertou passando a div escolhida pelo jogador
