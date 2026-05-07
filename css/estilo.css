@@ -2,36 +2,39 @@
     display:none;
   }
   .visivel{
-    display:inline;
+    display:inline
   }
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: rgba(99, 15, 15, 0.72);
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px double orange;
     padding: 10px;
-    margin: 20px;
+    margin: 21px;
   }
   .acertou {
     text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
+    color: rgb(25, 0, 255);
+    background-color: rgb(253, 253, 253);
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid rgb(8, 141, 15);
     padding: 10px;
     margin: 20px;
   }
   .errou {
     text-align: center;
     font-size: 100px;
-    color: white;
-    background-color: red;
+    color: black;
+    background-color: rgb(255, 0, 0);
     width: 150px;
     height: 200px;
     border: 15px solid black;
     padding: 10px;
     margin: 20px;
+    background-size: 280px;
+    background-position-x: center;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3P5S0yb4pl5pUIxFsFUQgxArzUI2M41bdlw&s');
   }
