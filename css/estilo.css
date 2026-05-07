@@ -1,37 +1,108 @@
-.invisivel{
-    display:none;
-  }
-  .visivel{
-    display:inline;
-  }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
-  }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
-    text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
-  }
+     :root {
+            --bg-pastel: #fdfcf0;
+            --mint: #b8e0d2;
+            --blue: #95d5ee;
+            --peach: #f7cac9;
+            --smile-gold: #f9d976;
+            --text-gray: #778899;
+        }
+
+        body {
+            background-color: var(--bg-pastel);
+            color: var(--text-gray);
+            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #principal {
+            background: white;
+            padding: 2rem;
+            border-radius: 40px;
+            box-shadow: 0 15px 0px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 8px solid #f0f0f0;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .inicial {
+            width: 75px;
+            height: 75px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            background-color: #fff;
+            border: 6px solid var(--blue);
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--blue);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .circulo-1 { border-color: var(--blue) !important; color: var(--blue); }
+        .circulo-2 { border-color: var(--mint) !important; color: var(--mint); }
+        .circulo-3 { border-color: var(--peach) !important; color: var(--peach); }
+
+        .inicial.erro {
+            background-color: #ffb3ba !important;
+            border-color: #ff8b94 !important;
+            color: white !important;
+            animation: shake 0.4s;
+            pointer-events: none;
+        }
+
+        .inicial.acerto {
+            background-color: var(--smile-gold) !important;
+            border-color: #f1c40f !important;
+            color: white !important;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+
+        /* Estilo do Placar */
+        .placar {
+            background-color: #f8f9fa;
+            border-radius: 20px;
+            padding: 15px;
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .stat-box {
+            padding: 5px;
+            border-bottom: 2px solid #eee;
+        }
+
+        #joganovamente {
+            background-color: var(--blue);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 5px 0px #7ab8d3;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        #resposta {
+            font-size: 1.2rem;
+            margin-top: 15px;
+            font-weight: bold;
+            min-height: 1.5em;
+        }
