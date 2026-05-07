@@ -7,31 +7,35 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: rgb(91, 75, 135);
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid rgb(159, 125, 173);
     padding: 10px;
     margin: 20px;
   }
   .acertou {
     text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
+    color: rgb(27, 123, 132);
+    background-color: rgb(79, 104, 174);
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid rgb(124, 182, 213);
     padding: 10px;
     margin: 20px;
   }
   .errou {
     text-align: center;
     font-size: 100px;
-    color: white;
-    background-color: red;
+    color: rgb(212, 135, 135);
+    background-color: rgb(220, 69, 109);
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px solid rgb(234, 175, 175);
     padding: 10px;
     margin: 20px;
+  }
+
+  body{
+    background-color: cornflowerblue;
   }
