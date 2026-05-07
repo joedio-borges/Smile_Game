@@ -1,37 +1,124 @@
-.invisivel{
-    display:none;
-  }
-  .visivel{
-    display:inline;
-  }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
-  }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
-    text-align: center;
-    font-size: 100px;
+body {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    min-height: 100vh;
     color: white;
-    background-color: red;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.invisivel {
+    display: none;
+}
+
+.visivel {
+    display: inline;
+}
+
+/* CARTAS */
+.inicial {
+    text-align: center;
+    font-size: 90px;
+    color: white;
+    background: linear-gradient(145deg, #2563eb, #1e40af);
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 6px solid #93c5fd;
+    border-radius: 25px;
     padding: 10px;
     margin: 20px;
-  }
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.4);
+}
+
+.inicial:hover {
+    transform: scale(1.05);
+}
+
+/* ACERTO */
+.acertou {
+    text-align: center;
+    font-size: 90px;
+    color: white;
+    background: linear-gradient(145deg, #06b6d4, #0891b2);
+    width: 150px;
+    height: 200px;
+    border: 6px solid #67e8f9;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 20px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.4);
+}
+
+/* ERRO */
+.errou {
+    text-align: center;
+    font-size: 90px;
+    color: white;
+    background: linear-gradient(145deg, #334155, #0f172a);
+    width: 150px;
+    height: 200px;
+    border: 6px solid #94a3b8;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 20px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.4);
+}
+
+#resposta {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+/* Estilo base para todas as cartas */
+.inicial, .acertou, .errou {
+    display: flex;
+    flex-direction: column; /* Coloca o número em cima e a imagem embaixo */
+    align-items: center;    /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    width: 150px;
+    height: 200px;
+    border-radius: 25px;
+    margin: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.4);
+    overflow: hidden; /* Garante que nada saia das bordas arredondadas */
+    line-height: 1;   /* Ajusta o espaçamento do número */
+}
+
+.inicial {
+    font-size: 90px;
+    color: white;
+    background: linear-gradient(145deg, #2563eb, #1e40af);
+    border: 6px solid #93c5fd;
+}
+
+.inicial:hover {
+    transform: scale(1.05);
+}
+
+.acertou {
+    font-size: 60px; /* Diminuímos um pouco o número para caber o emoji */
+    color: white;
+    background: linear-gradient(145deg, #06b6d4, #0891b2);
+    border: 6px solid #67e8f9;
+}
+
+.errou {
+    font-size: 90px;
+    color: white;
+    background: linear-gradient(145deg, #334155, #0f172a);
+    border: 6px solid #94a3b8;
+}
+
+/* Ajuste na imagem do emoji */
+#imagem {
+    width: 80px;  /* Tamanho menor para caber dentro do card */
+    height: auto;
+    margin-top: 5px;
+}
