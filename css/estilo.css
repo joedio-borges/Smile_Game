@@ -35,9 +35,19 @@ body {
     border: 3px solid yellow;
 }
 
+.acertou:hover {
+    background: linear-gradient(145deg, #28a745, #5cd65c);
+    transform: scale(1.1);
+}
+
 .errou {
     background: linear-gradient(145deg, #dc3545, #ff6666);
     border: 3px solid black;
+}
+
+.errou:hover {
+    background: linear-gradient(145deg, #dc3545, #ff6666);
+    transform: scale(1.1);
 }
 
 .invisivel {
