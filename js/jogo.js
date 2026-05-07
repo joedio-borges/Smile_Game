@@ -75,8 +75,8 @@ function verifica(obj) {
       acertou(obj);
       acertos++;
     } else {
-      obj.className = "errou";
-      acertou(document.getElementById(sorteado));
+      errou(obj);  // Chama a função de erro na carta clicada
+      acertou(document.getElementById(sorteado));  // Mostra a correta
     }
 
     atualizaPlacar(acertos, tentativas);
@@ -85,5 +85,15 @@ function verifica(obj) {
   }
 }
 
+function errou(obj) {
+  obj.className = "errou";
+  obj.innerHTML = "";
+
+  const img = new Image(100);
+  img.id = "imagem-erro";
+  img.src = "https://img.a.transfermarkt.technology/portrait/big/68290-1692601435.jpg?lm=1";  // Foto do Vinícius Jr. de terno
+
+  obj.appendChild(img);  // Corrigido: appendChild
+}
 btnJogarNovamente.addEventListener('click', jogarNovamente);
 btnReiniciar.addEventListener('click', reiniciar);
