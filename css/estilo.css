@@ -10,7 +10,8 @@
     background-color: lightgrey;
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid mediumvioletred
+;
     padding: 10px;
     margin: 20px;
   }
@@ -34,4 +35,7 @@
     border: 15px solid black;
     padding: 10px;
     margin: 20px;
+  }
+  body {
+    background-color:lightgoldenrodyellow;
   }
