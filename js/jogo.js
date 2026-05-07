@@ -30,7 +30,7 @@
       //percorremos todas as divs armazenadas
       for (i = 0; i < divis.length; i++) {
         //verificamos se sao as divs com ids 0 ou 1 ou 2
-        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2) {
+        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2 || divis[i].id == 3) {
           //alteramos a classe css das divs 0, 1 e 2 (className)
           divis[i].className = "inicial";
         }
@@ -42,6 +42,12 @@
       if (imagem != "") {
         //removemos a imagem do Smile
         imagem.remove();
+      }
+      let imagem2 = document.getElementById("imagem2");
+      //se a imagem nao for vazia (se ela existir)
+      if (imagem2 != "") {
+        //removemos a imagem do Smile
+        imagem2.remove();
       }
     }
 
@@ -83,7 +89,7 @@
           btnReiniciar.className = 'visivel';
         }
         //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random)
-        let sorteado = Math.floor(Math.random() * 3);
+        let sorteado = Math.floor(Math.random() * 4);
         //se o id da <div> escolhida pelo jogador for igual ao número sorteado
         if (obj.id == sorteado) {
           //chama a funçao acertou passando a div escolhida pelo jogador
@@ -96,7 +102,13 @@
           //armazena a div aonde Smile está escondido (getElementById)
           const objSorteado = document.getElementById(sorteado);
           //chama a funçao acertou para mostrar a div aonde está o Smile
+          const img = new Image(100);
+          img.id = "imagem2";
+          //altera o atributo src (source) da imagem criada
+          img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Gnome-face-angry.svg/960px-Gnome-face-angry.svg.png";
+          //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
           acertou(objSorteado);
+          obj.appendChild(img);
         }
         //chama a funçao que atualiza o placar
         atualizaPlacar(acertos, tentativas);

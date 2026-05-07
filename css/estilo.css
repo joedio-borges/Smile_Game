@@ -7,10 +7,10 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: rgb(210, 210, 210);
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid rgb(78, 78, 78);
     padding: 10px;
     margin: 20px;
   }
@@ -20,18 +20,17 @@
     background-color: LawnGreen;
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid rgb(175, 255, 172);
     padding: 10px;
     margin: 20px;
   }
   .errou {
     text-align: center;
-    font-size: 100px;
     color: white;
-    background-color: red;
+    background-color: rgb(255, 42, 42);
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px solid rgb(255, 113, 113);
     padding: 10px;
     margin: 20px;
   }
