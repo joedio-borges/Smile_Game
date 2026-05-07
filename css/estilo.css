@@ -6,11 +6,15 @@
     color: whitesmoke;
     font-family: "Shadows Into Light", cursive;
   }
+  .playagain{
+    width: 100px;
+  }
   .invisivel{
     display:none;
   }
   .visivel{
     display:inline;
+    width: 100px;
   }
   .inicial {
     text-align: center;
