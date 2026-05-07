@@ -7,31 +7,44 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: white;
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid goldenrod;
     padding: 10px;
     margin: 20px;
   }
   .acertou {
     text-align: center;
     color: yellow;
-    background-color: LawnGreen;
+    background-color: lawngreen;
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid goldenrod;
     padding: 10px;
     margin: 20px;
   }
   .errou {
     text-align: center;
-    font-size: 100px;
-    color: white;
+    color: black;
     background-color: red;
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px solid goldenrod;
     padding: 10px;
     margin: 20px;
+  }
+  .autor {
+    position: absolute;
+    margin-top: 600px;
+  }
+  #texto {
+    text-align: center;
+    color: red;
+  }
+  body {
+    background: url(https://t4.ftcdn.net/jpg/17/36/69/73/360_F_1736697366_0xoQk2eAjmUMtZtlaWfaxaL0A0t9mZJ3.jpg);  
+  }
+  #principal h1 {
+    font-size: 50pt;
   }
