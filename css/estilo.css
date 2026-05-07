@@ -1,4 +1,17 @@
-.invisivel{
+  body{
+    background-color: #1e1e1e;
+    color: azure;
+    margin-top: 10px;
+  }
+  
+  .mycredit {
+    font-size: 9pt;
+    color: rgb(50, 100, 190);
+    background-color: azure;
+    padding: 2px 4px;
+  }
+
+  .invisivel{
     display:none;
   }
   .visivel{
@@ -7,31 +20,30 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: rgba(128, 128, 128, 0.5);
+    width: 150px;
+    height: 200px;
+    border: 15px solid gray;
+    padding: 10px;
+    margin: 20px;
+  }
+  .acertou {
+    text-align: center;
+    color: azure;
+    background-color: rgba(0, 128, 0, 0.5);
     width: 150px;
     height: 200px;
     border: 15px solid green;
     padding: 10px;
     margin: 20px;
   }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
   .errou {
     text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
+    color: azure;
+    background-color: rgba(255, 0, 0, 0.5);
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px solid red;
     padding: 10px;
     margin: 20px;
   }
