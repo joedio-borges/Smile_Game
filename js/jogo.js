@@ -62,7 +62,7 @@
       const img = new Image(100);
       img.id = "imagem";
       //altera o atributo src (source) da imagem criada
-      img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
+      img.src = "https://thumbs.dreamstime.com/z/tra%C3%A7%C3%A3o-do-emoticon-l%C3%ADngua-44099772.jpg?ct=jpeg";
       //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
       obj.appendChild(img);
     }
