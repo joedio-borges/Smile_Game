@@ -35,3 +35,102 @@
     padding: 10px;
     margin: 20px;
   }
+
+  /* Mexido */
+
+  body {
+  background-color: #0f172a; /* azul escuro */
+  color: #cbd5f5;
+  font-family: 'Courier New', monospace;
+  padding: 15px;
+  }
+
+  #principal {
+    background-color: #1e293b;
+    padding: 20px;
+    border: 4px solid #334155;
+    border-radius: 0; /* deixa quadrado */
+  }
+
+  /* cartas estilo bloco minecraft */
+  .inicial {
+    text-align: center;
+    font-size: 60px;
+    background-color: #334155;
+    width: 150px;
+    height: 150px;
+    border: 6px solid #64748b;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    /* deixa mais "pixelado" */
+    box-shadow: inset -4px -4px 0px #0f172a;
+  }
+
+  /* acertou - verde tipo grama */
+  .acertou {
+    background-color: #22c55e;
+    border: 6px solid #16a34a;
+    color: #052e16;
+  }
+
+  /* errou - contraste vermelho frio */
+  .errou {
+    background-color: #1e3a8a;
+    border: 6px solid #1d4ed8;
+    color: #e0f2fe;
+  }
+
+  /* botões */
+  button {
+    background-color: #334155;
+    color: white;
+    border: 2px solid #64748b;
+    padding: 10px;
+  }
+
+  button:hover {
+    background-color: #475569;
+  }
+
+  .inicial, .acertou, .errou {
+    width: 150px;
+    height: 150px;
+    overflow: hidden; /* 🔥 corta o que sair */
+    position: relative;
+  }
+
+  .inicial {
+    font-size: 40px;
+  }
+
+  .inicial img,
+  .acertou img,
+  .errou img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .acertou img {
+    transform: scale(0.9);
+  }
+
+  .inicial,
+.acertou,
+.errou {
+  width: 175px;
+  height: 260px;
+  border-radius: 34px;
+
+@media (max-width: 768px) {
+  .inicial,
+  .acertou,
+  .errou {
+    width: 145px;
+    height: 280px;
+  }
+  /*colocar imagem na carta que erra*/
