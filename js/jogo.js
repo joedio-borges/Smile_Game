@@ -38,10 +38,13 @@
 
       //armazenamos a imagem do Smile na variável imagem (getElementById)
       let imagem = document.getElementById("imagem");
+      let erroimg = document.getElementById("erroimg");
       //se a imagem nao for vazia (se ela existir)
-      if (imagem != "") {
+      if (imagem != "")
+      if (erroimg != "") {
         //removemos a imagem do Smile
         imagem.remove();
+        erroimg.remove();
       }
     }
 
@@ -96,6 +99,13 @@
           //armazena a div aonde Smile está escondido (getElementById)
           const objSorteado = document.getElementById(sorteado);
           //chama a funçao acertou para mostrar a div aonde está o Smile
+            const img = new Image(100);
+           img.id = "erroimg";
+      //altera o atributo src (source) da imagem criada
+            img.src = "https://static.vecteezy.com/system/resources/previews/066/724/980/non_2x/sad-cat-face-angry-expression-domestic-pet-isolated-on-transparent-background-png.png";
+      //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
+           obj.appendChild(img);
+          
           acertou(objSorteado);
         }
         //chama a funçao que atualiza o placar

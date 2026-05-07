@@ -7,32 +7,35 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: rgb(145, 255, 126);
+    background-color: rgb(255, 126, 184);
     width: 150px;
     height: 200px;
-    border: 15px solid rgb(197, 255, 182);
+    border: 15px solid rgb(255, 182, 231);
     padding: 10px;
     margin: 20px;
   }
   .acertou {
     text-align: center;
     color: rgb(0, 0, 0);
-    background-color: rgb(255, 253, 144);
+    background-color: rgb(144, 255, 146);
     width: 150px;
     height: 200px;
-    border: 15px solid rgb(255, 223, 82);
+    border: 15px solid rgb(125, 255, 82);
     padding: 10px;
     margin: 20px;
   }
   .errou {
     text-align: center;
-    font-size: 100px;
     color: white;
-    background-color: rgb(255, 172, 222);
+    background-color: rgb(255, 113, 113);
     width: 150px;
     height: 200px;
-    border: 15px solid rgb(255, 124, 227);
+    border: 15px solid rgb(255, 42, 42);
     padding: 10px;
     margin: 20px;
+    
+    
   }
+  
+ 
  
