@@ -66,7 +66,6 @@
       //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
       obj.appendChild(img);
     }
-
     //Função que sorteia um número aleatório entre 0 e 2 e verifica se o jogador acertou
     function verifica(obj) {
       //se jogar é verdadeiro
