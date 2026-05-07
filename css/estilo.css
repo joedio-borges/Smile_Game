@@ -7,31 +7,34 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: rgb(0, 0, 0);
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid rgb(255, 0, 0);
     padding: 10px;
     margin: 20px;
   }
   .acertou {
     text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 0, 0);
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid rgb(255, 0, 0);
     padding: 10px;
     margin: 20px;
   }
   .errou {
     text-align: center;
     font-size: 100px;
-    color: white;
-    background-color: red;
+    color: rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0);
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px solid rgb(255, 255, 255);
     padding: 10px;
     margin: 20px;
+    background-image: url("https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/2026/player-item/26-237067.bfc157295a35bf71b367e7a6fe8445a0a87304a70b3f09b68867b7fe17045850.webp");  
+    background-size: cover; 
+    background-position: center; 
   }
