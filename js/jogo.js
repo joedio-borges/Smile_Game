@@ -30,8 +30,8 @@
       //percorremos todas as divs armazenadas
       for (i = 0; i < divis.length; i++) {
         //verificamos se sao as divs com ids 0 ou 1 ou 2
-        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2) {
-          //alteramos a classe css das divs 0, 1 e 2 (className)
+        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2 || divis[i].id == 3 || divis[i].id == 4) {
+          //alteramos a classe css das divs 0, 1 e 2 3 (className)
           divis[i].className = "inicial";
         }
       }
@@ -43,6 +43,11 @@
         //removemos a imagem do Smile
         imagem.remove();
       }
+      let imagems = document.getElementById("imagem1");
+      //se a imagem nao for vazia (se ela existir)
+      if (imagems != "") {
+        //removemos a imagem do Smile
+        imagems.remove();}
     }
 
     //funçao que atualiza o placar
@@ -62,7 +67,7 @@
       const img = new Image(100);
       img.id = "imagem";
       //altera o atributo src (source) da imagem criada
-      img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
+      img.src = "https://animehunch.com/wp-content/uploads/2025/05/image-9.png";
       //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
       obj.appendChild(img);
     }
@@ -83,7 +88,7 @@
           btnReiniciar.className = 'visivel';
         }
         //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random)
-        let sorteado = Math.floor(Math.random() * 3);
+        let sorteado = Math.floor(Math.random() * 4);
         //se o id da <div> escolhida pelo jogador for igual ao número sorteado
         if (obj.id == sorteado) {
           //chama a funçao acertou passando a div escolhida pelo jogador
@@ -93,6 +98,12 @@
         } else {//se errou a tentativa
           //altera a classe da <div> escolhida pelo jogador para a classe errou
           obj.className = "errou";
+           const img = new Image(100);
+            img.id = "imagem1";
+            img.src = "https://i.pinimg.com/736x/bb/f2/87/bbf287f47c2a00e4090101d454c80a5d.jpg";
+            obj.innerHTML= "";
+            obj.appendChild(img);
+
           //armazena a div aonde Smile está escondido (getElementById)
           const objSorteado = document.getElementById(sorteado);
           //chama a funçao acertou para mostrar a div aonde está o Smile

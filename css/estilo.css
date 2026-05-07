@@ -7,12 +7,13 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: rgb(18, 14, 14);
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid rgb(250, 250, 250);
     padding: 10px;
     margin: 20px;
+    border-radius: 15px;
   }
   .acertou {
     text-align: center;
@@ -20,7 +21,7 @@
     background-color: LawnGreen;
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid rgb(0, 255, 47);
     padding: 10px;
     margin: 20px;
   }
@@ -34,4 +35,25 @@
     border: 15px solid black;
     padding: 10px;
     margin: 20px;
+  }
+#imagem{
+  width: 130px;
+  position: relative;
+  bottom: 30px;
+  right: 20px ;
+}
+.corpo{
+  background-image:url(https://wallpapers.com/images/hd/one-piece-chopper-4td3vr6dcah8m20d.jpg) ;
+  background-size: cover;
+  background-repeat:no-repeat ;
+  background-position: center ;
+}
+
+  #imagem1{
+  width: 230px;
+  position: relative;
+  bottom: 16px;
+  right: 20px;
+  padding-right: 60px;
+
   }
