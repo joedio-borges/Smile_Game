@@ -24,8 +24,8 @@ function jogarNovamente() {
         c.innerHTML = "?";
     });
 
-    let img = document.getElementById("imagem");
-    if (img) img.remove();
+    let imgs = document.querySelectorAll("img");
+    imgs.forEach(img => img.remove());
 }
 
 function reiniciar() {
@@ -44,6 +44,16 @@ function acertou(obj) {
     const img = new Image(80);
     img.id = "imagem";
     img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
+
+    obj.innerHTML = "";
+    obj.appendChild(img);
+}
+
+function errou(obj) {
+    obj.classList.add("errou");
+
+    const img = new Image(80);
+    img.src = "https://em-content.zobj.net/source/apple/81/clown-face_1f921.png";
 
     obj.innerHTML = "";
     obj.appendChild(img);
@@ -69,7 +79,7 @@ function verifica(obj) {
         acertou(obj);
         acertos++;
     } else {
-        obj.classList.add("errou");
+        errou(obj);
         acertou(document.getElementById(sorteado));
     }
 
