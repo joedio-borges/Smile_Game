@@ -5,33 +5,46 @@
     display:inline;
   }
   .inicial {
+    color: aliceblue;
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: rgb(13, 13, 13);
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px double rgb(181, 184, 94);
     padding: 10px;
     margin: 20px;
   }
   .acertou {
     text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
+    color: rgb(255, 255, 255);
+    background-color: rgb(24, 241, 0);
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px double rgb(158, 255, 141);
     padding: 10px;
     margin: 20px;
+    background-size: cover;
+    background-image: url('imagens/josebem.jpg');
   }
   .errou {
     text-align: center;
     font-size: 100px;
     color: white;
-    background-color: red;
+    background-color: rgb(0, 0, 0);
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px double rgb(255, 0, 0);
     padding: 10px;
     margin: 20px;
+    background-size: cover;
+    background-image: url('imagens/Web_Photo_Editor.jpg')
+  }
+  body{
+    background-color: black;
+    color: aliceblue;
+    font-family: 'Comic Sans MS';
+  }
+  button {
+    background-color: rgb(181, 184, 94);
   }
