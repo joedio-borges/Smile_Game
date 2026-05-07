@@ -1,37 +1,75 @@
-.invisivel{
-    display:none;
-  }
-  .visivel{
-    display:inline;
-  }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
-  }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
-    text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
-  }
+body {
+  background-color: #fff5f8;
+  color: #d63384;
+}
+
+.invisivel {
+  display: none;
+}
+
+.visivel {
+  display: inline-block;
+}
+
+button {
+  background-color: #ff85a1;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f7597d;
+}
+
+.inicial {
+  text-align: center;
+  font-size: 80px;
+  background-color: #ffe0e9;
+  width: 120px;
+  height: 160px;
+  border: 10px solid #ff85a1;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #ff85a1;
+}
+
+.acertou {
+  text-align: center;
+  background-color: #ffffff;
+  width: 120px;
+  height: 160px;
+  border: 10px solid #f7597d;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 15px;
+}
+p {
+  text-align: center;
+}
+
+.errou {
+  text-align: center;
+  font-size: 80px;
+  color: #ffffff;
+  background-color: #ffccd5;
+  width: 120px;
+  height: 160px;
+
+  border: 15px solid #d8bfd8;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 15px;
+}
+h1 {
+  font-family: "Dancing Script", cursive; /*  letra cursiva */
+  text-align: center;
+  font-size: 3.5rem;
+  margin-top: 20px;
+  color: #d63384;
+}
