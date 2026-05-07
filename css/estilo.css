@@ -26,9 +26,9 @@
   }
   .errou {
     text-align: center;
-    font-size: 100px;
+   
     color: white;
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.751);
     width: 150px;
     height: 200px;
     border: 15px solid black;
