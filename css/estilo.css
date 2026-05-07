@@ -1,3 +1,7 @@
+body {
+background-color: black;
+color: lightblue;
+}
 .invisivel{
     display:none;
   }
@@ -6,21 +10,21 @@
   }
   .inicial {
     text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
+    font-size: 70px;
+    background-color: darkcyan;
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 20px groove lightcoral;
     padding: 10px;
     margin: 20px;
   }
   .acertou {
     text-align: center;
     color: yellow;
-    background-color: LawnGreen;
+    background-color: purple;
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 24px groove darkgrey;
     padding: 10px;
     margin: 20px;
   }
@@ -28,10 +32,10 @@
     text-align: center;
     font-size: 100px;
     color: white;
-    background-color: red;
+    background-color: darkkhaki;
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px groove aquamarine;
     padding: 10px;
     margin: 20px;
   }
