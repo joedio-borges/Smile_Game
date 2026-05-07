@@ -43,6 +43,12 @@
         //removemos a imagem do Smile
         imagem.remove();
       }
+      let imgerro = document.getElementById("ERROU");
+      //se a imagem nao for vazia (se ela existir)
+      if (imgerro != "") {
+        //removemos a imagem do Smile
+        imgerro.remove();
+      }
     }
 
     //funçao que atualiza o placar
@@ -62,7 +68,7 @@
       const img = new Image(100);
       img.id = "imagem";
       //altera o atributo src (source) da imagem criada
-      img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
+      img.src = "https://static.vecteezy.com/system/resources/previews/018/249/036/non_2x/happy-kind-tree-cartoon-character-on-transparent-background-for-decorating-projects-png.png";
       //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
       obj.appendChild(img);
     }
@@ -97,6 +103,11 @@
           const objSorteado = document.getElementById(sorteado);
           //chama a funçao acertou para mostrar a div aonde está o Smile
           acertou(objSorteado);
+          const img = new Image(100);
+          img.id = "ERROU";
+          //altera o atributo src (source) da imagem criada
+          img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmiSJn6HWjmAXMtAI5NDo6CMvkFs0k0zBq8Q&s"
+          obj.appendChild(img);
         }
         //chama a funçao que atualiza o placar
         atualizaPlacar(acertos, tentativas);
