@@ -30,7 +30,7 @@
       //percorremos todas as divs armazenadas
       for (i = 0; i < divis.length; i++) {
         //verificamos se sao as divs com ids 0 ou 1 ou 2
-        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2) {
+        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2 || divis[i].id == 3) {
           //alteramos a classe css das divs 0, 1 e 2 (className)
           divis[i].className = "inicial";
         }
@@ -97,6 +97,12 @@
           const objSorteado = document.getElementById(sorteado);
           //chama a funçao acertou para mostrar a div aonde está o Smile
           acertou(objSorteado);
+                const img = new Image(100);
+      img.id = "imagem";
+      //altera o atributo src (source) da imagem criada
+      img.src = "https://media.istockphoto.com/id/518118888/pt/vetorial/esgares-%C3%ADcones-emotivos.jpg?s=2048x2048&w=is&k=20&c=-tgv2woCl3QuICRcnKNRDS6gN2ZsyyKWWsJd-I10xwY=";
+      //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
+      obj.appendChild(img);
         }
         //chama a funçao que atualiza o placar
         atualizaPlacar(acertos, tentativas);
