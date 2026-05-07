@@ -1,37 +1,74 @@
-.invisivel{
+z.invisivel{
     display:none;
   }
   .visivel{
     display:inline;
   }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
-  }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
-    text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
-  }
+ body {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: hsl(327, 100%, 86%);
+}
+
+
+h1 {
+  margin-top: 20px;
+  color: deeppink;
+}
+
+#linha1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 15px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+
+
+ .carta {
+  width: 80px;
+  height: 80px;
+  background-color: #ff2684ed;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+}
+
+
+
+/* efeito ao passar o mouse */
+.carta:hover {
+  background-color: #ff8fcd;
+  transform: scale(1.1);
+}
+
+.acertou {
+  background-color: #d00aa5 !important;
+}
+
+.errou {
+  background-color: #ff1e4f !important;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff029e;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ff5aa4;
+}
