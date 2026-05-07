@@ -62,7 +62,7 @@
       const img = new Image(100);
       img.id = "imagem";
       //altera o atributo src (source) da imagem criada
-      img.src = "https://sig.ifc.edu.br/shared/verFoto?idFoto=2938959&key=afeadbf078122603d3eab381e21d7cbd";
+      img.src = "";
       //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
       obj.appendChild(img);
     }
