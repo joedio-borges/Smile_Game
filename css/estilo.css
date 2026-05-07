@@ -7,20 +7,20 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: brown;
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px double orange;
     padding: 10px;
     margin: 20px;
   }
   .acertou {
     text-align: center;
     color: yellow;
-    background-color: LawnGreen;
+    background-color: lightblue;
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px double lightseagreen;
     padding: 10px;
     margin: 20px;
   }
@@ -31,7 +31,10 @@
     background-color: red;
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px double black;
     padding: 10px;
     margin: 20px;
+    background-image: url("https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/2026/player-item/26-237067.bfc157295a35bf71b367e7a6fe8445a0a87304a70b3f09b68867b7fe17045850.webp");  
+    background-size: cover; 
+    background-position: center; 
   }
