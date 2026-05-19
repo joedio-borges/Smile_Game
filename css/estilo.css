@@ -1,37 +1,40 @@
 .invisivel{
     display:none;
   }
+  body {
+    background-color: rgb(44, 116, 128);
+  }
   .visivel{
     display:inline;
   }
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color: rgb(158, 210, 218);
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid rgb(63, 79, 134);
     padding: 10px;
     margin: 20px;
   }
   .acertou {
     text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
+    color: rgb(144, 216, 169);
+    background-color: rgb(69, 117, 84);
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid rgb(0, 82, 130);
     padding: 10px;
     margin: 20px;
   }
   .errou {
     text-align: center;
-    font-size: 100px;
     color: white;
     background-color: red;
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px solid rgb(76, 38, 46);
     padding: 10px;
     margin: 20px;
+    background-image: url('dog-looks-sad.jpg')
   }
