@@ -1,37 +1,353 @@
-.invisivel{
-    display:none;
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  font-family: Arial, sans-serif;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+    url('../img/fundo.jpeg');
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow-x: hidden;
+}
+
+/* camada escura */
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  background:
+    radial-gradient(circle,
+    rgba(98,0,255,0.2),
+    rgba(0,0,0,0.8));
+
+  z-index: 0;
+}
+
+/* conteúdo */
+.conteudo {
+  position: relative;
+  z-index: 2;
+}
+
+/* título */
+h1 {
+  color: #ffd000;
+
+  font-size: 55px;
+
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 10px orange,
+    0 0 20px red,
+    0 0 40px purple;
+}
+
+/* subtítulo */
+.subtitulo {
+  color: white;
+
+  font-size: 20px;
+
+  margin-bottom: 30px;
+
+  text-shadow:
+    0 0 10px black;
+}
+
+/* CARTA */
+.carta {
+  width: 150px;
+  height: 220px;
+
+  margin: 15px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.8s,
+    box-shadow 0.4s;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+    url('../img/costacarta.jpg');
+
+  background-size: cover;
+  background-position: center;
+
+  border: 4px solid #b87333;
+
+  box-shadow:
+    0 0 10px black,
+    0 0 20px rgba(255,140,0,0.4);
+}
+
+/* HOVER */
+.carta:hover {
+  transform:
+    scale(1.08)
+    translateY(-10px)
+    rotateY(8deg);
+
+  box-shadow:
+    0 0 20px orange,
+    0 0 40px red,
+    0 0 70px purple;
+}
+
+/* brilho holográfico */
+.carta::before {
+  content: "";
+
+  position: absolute;
+  inset: -50%;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.25),
+      transparent
+    );
+
+  transform: rotate(25deg);
+
+  animation: brilho 3s linear infinite;
+}
+
+/* brilho interno */
+.carta::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: 12px;
+
+  box-shadow:
+    inset 0 0 20px rgba(255,255,255,0.15);
+
+  pointer-events: none;
+}
+
+/* símbolo ? */
+.carta span {
+  color: white;
+
+  font-size: 60px;
+  font-weight: bold;
+
+  text-shadow:
+    0 0 10px black,
+    0 0 20px black;
+}
+
+/* carta revelada */
+.carta img {
+  position: relative;
+
+  z-index: 2;
+
+  animation:
+    invocar 0.7s ease;
+}
+
+/* acertou */
+.acertou {
+
+  animation:
+    explosao 0.8s ease,
+    pulse 2s infinite;
+
+  border-color: #00ff99 !important;
+
+  box-shadow:
+    0 0 20px #00ff99,
+    0 0 40px #00ff99,
+    0 0 80px #00ff99 !important;
+}
+
+/* errou */
+.errou {
+
+  animation: tremer 0.4s;
+
+  border-color: #ff0044 !important;
+
+  box-shadow:
+    0 0 20px #ff0044,
+    0 0 50px #ff0044 !important;
+}
+
+/* placar */
+.placar {
+  color: white;
+
+  font-size: 20px;
+
+  margin-top: 20px;
+
+  text-shadow:
+    0 0 10px black,
+    0 0 20px black;
+}
+
+/* botão */
+button {
+  margin: 10px;
+  padding: 12px 25px;
+
+  border: none;
+  border-radius: 50px;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      45deg,
+      #5f00ba,
+      #a100ff
+    );
+
+  transition: 0.3s;
+
+  box-shadow:
+    0 0 10px #a100ff,
+    0 0 30px #5f00ba;
+}
+
+/* hover botão */
+button:hover {
+  transform: scale(1.1);
+
+  box-shadow:
+    0 0 20px #ff00ff,
+    0 0 50px #7a00ff;
+}
+
+/* invisível */
+.invisivel {
+  display: none;
+}
+
+/* brilho holográfico */
+@keyframes brilho {
+
+  0% {
+    transform:
+      translateX(-100%)
+      rotate(25deg);
   }
-  .visivel{
-    display:inline;
+
+  100% {
+    transform:
+      translateX(200%)
+      rotate(25deg);
   }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
+}
+
+/* explosão */
+@keyframes explosao {
+
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
   }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
+
+  50% {
+    transform: scale(1.15);
   }
-  .errou {
-    text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
+}
+
+/* pulsando */
+@keyframes pulse {
+
+  0% {
+    box-shadow:
+      0 0 15px #00ff99;
+  }
+
+  50% {
+    box-shadow:
+      0 0 40px #00ff99,
+      0 0 80px #00ff99;
+  }
+
+  100% {
+    box-shadow:
+      0 0 15px #00ff99;
+  }
+}
+
+/* tremer */
+@keyframes tremer {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-8px);
+  }
+
+  50% {
+    transform: translateX(8px);
+  }
+
+  75% {
+    transform: translateX(-8px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* invocação */
+@keyframes invocar {
+
+  0% {
+    transform:
+      scale(0)
+      rotate(-360deg);
+
+    opacity: 0;
+  }
+
+  100% {
+    transform:
+      scale(1)
+      rotate(0deg);
+
+    opacity: 1;
+  }
+}
