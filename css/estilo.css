@@ -10,28 +10,30 @@
     background-color: lightgrey;
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid rgb(255, 163, 209);
     padding: 10px;
     margin: 20px;
   }
   .acertou {
     text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
+    color: srgb(206, 137, 255);
+    background-color: rgb(173, 21, 255);
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid rgb(118, 5, 179);
     padding: 10px;
     margin: 20px;
   }
   .errou {
     text-align: center;
     font-size: 100px;
-    color: white;
-    background-color: red;
+    color: rgb(3, 186, 253);
+    background-color: rgb(3, 158, 255);
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px solid rgb(1, 68, 224);
     padding: 10px;
     margin: 20px;
+    background-image: url("https://i.pinimg.com/474x/23/70/0b/23700b5cdca5c126cc4d470a66d719af.jpg");
+    background-size: 100%;
   }
