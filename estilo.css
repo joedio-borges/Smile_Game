@@ -1,0 +1,91 @@
+  @font-face {
+    font-family: 'diplomata';
+    src: url(./fonte/Miltonian-Regular.ttf);
+  } 
+  @font-face {
+    font-family: 'fofis';
+    src: url(./fonte/Chewy-Regular.ttf);
+  }
+  .par {
+    text-indent: 225pt;
+    margin-bottom: -2px;
+    font-family: serif;
+  }
+  #reiniciar, #joganovamente {
+    width: 500px;
+    height: 50px;
+    font-size: 20pt;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(rgb(207, 156, 255),blueviolet,rgb(105, 20, 184));
+    box-shadow: 0px 0px 10px blueviolet;
+  }
+  .invisivel{
+    display:none;
+  }
+  .visivel{
+    display:inline;
+  }
+  #resposta{
+    text-align: center;
+    font-size: 18px;
+  }
+  i {
+    color: blueviolet;
+    background-color: rgb(229, 206, 251);
+    border-radius: 5px;
+  }
+  b {
+    color: rgb(255, 204, 50);
+    font-family: 'fofis';
+  }
+  .pla{
+    font-size: 22px;
+  }
+  s {
+    text-decoration: none;
+    font-family: "diplomata";
+    color: #256163;
+    font-size: 23px;
+  }
+  /*CSS das moedas*/
+  .inicial, .acertou, .errou {
+    font-family: "diplomata";
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 50%;
+  }
+  .inicial, .errou {
+    font-size: 100px;
+    box-shadow: 2px 2px 10px rgb(60, 89, 96);
+  }
+  .inicial {
+    color: rgb(129, 134, 139);
+    background: linear-gradient(135deg,rgb(203, 211, 220),rgb(168, 178, 189));
+    border: 10px dashed rgb(146, 151, 157);
+  }
+  .errou {
+    color: rgb(145, 80, 20);
+    background: linear-gradient(135deg,rgb(246, 148, 57),rgb(203, 108, 18));
+    border: 10px dashed rgb(174, 95, 21);
+  }
+  .acertou {
+    font-size: 0px;
+    background: linear-gradient(135deg,rgb(251, 220, 59),rgb(218, 184, 16));
+    border: 10px dashed rgb(180, 153, 19);
+    box-shadow: 0px 0px 20px #f8f41d;
+  }
+
+  .container h1 {
+    text-align: center;
+  }
+  #linha1 {
+    background: linear-gradient(#66d1d5,#479194);
+    margin: auto;
+    width: 400pt;
+    margin-bottom: 10px;
+    border-radius: 100px;
+  }
