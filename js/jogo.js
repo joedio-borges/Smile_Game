@@ -62,7 +62,7 @@
       const img = new Image(100);
       img.id = "imagem";
       //altera o atributo src (source) da imagem criada
-      img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
+      img.src = "https://www.koelnticket.de/obj/media/DE-eventim/galery/222x222/s/snoop-dogg-tickets-2023-02.jpg";
       //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
       obj.appendChild(img);
     }
