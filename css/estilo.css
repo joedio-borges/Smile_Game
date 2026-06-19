@@ -7,31 +7,38 @@
   .inicial {
     text-align: center;
     font-size: 100px;
-    background-color: lightgrey;
+    background-color:pink;
     width: 150px;
     height: 200px;
-    border: 15px solid green;
+    border: 15px solid lightpink;
     padding: 10px;
     margin: 20px;
+    border-radius: 20px;
   }
   .acertou {
     text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
+    color: white;
+    background-color: deeppink;
     width: 150px;
     height: 200px;
-    border: 15px solid yellow;
+    border: 15px solid deeppink;
     padding: 10px;
     margin: 20px;
+    background-image: url(https://pbs.twimg.com/media/G9EAeQDWIAAeScy?format=jpg&name=small);
+    background-size: 100%;
+    border-radius: 20px;
   }
   .errou {
     text-align: center;
-    font-size: 100px;
+    font-size: 20px;
     color: white;
     background-color: red;
     width: 150px;
     height: 200px;
-    border: 15px solid black;
+    border: 15px solid red;
     padding: 10px;
     margin: 20px;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF2_4Go5G02MoZhpSjZHf1YgYuciSueC6ZVg&s);
+    background-size: 100%;
+    border-radius: 20px;
   }
