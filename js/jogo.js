@@ -30,7 +30,7 @@
       //percorremos todas as divs armazenadas
       for (i = 0; i < divis.length; i++) {
         //verificamos se sao as divs com ids 0 ou 1 ou 2
-        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2) {
+        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2 || divis[i].id == 3) {
           //alteramos a classe css das divs 0, 1 e 2 (className)
           divis[i].className = "inicial";
         }
@@ -38,10 +38,13 @@
 
       //armazenamos a imagem do Smile na variável imagem (getElementById)
       let imagem = document.getElementById("imagem");
+      let erroimg = document.getElementById("erroimg");
       //se a imagem nao for vazia (se ela existir)
-      if (imagem != "") {
+      if (imagem != "")
+      if (erroimg != "") {
         //removemos a imagem do Smile
         imagem.remove();
+        erroimg.remove();
       }
     }
 
@@ -62,7 +65,7 @@
       const img = new Image(100);
       img.id = "imagem";
       //altera o atributo src (source) da imagem criada
-      img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
+      img.src = "https://static.vecteezy.com/system/resources/thumbnails/047/493/988/small/hairy-fluffy-cat-playing-png.png";
       //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
       obj.appendChild(img);
     }
@@ -83,7 +86,7 @@
           btnReiniciar.className = 'visivel';
         }
         //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random)
-        let sorteado = Math.floor(Math.random() * 3);
+        let sorteado = Math.floor(Math.random() * 4);
         //se o id da <div> escolhida pelo jogador for igual ao número sorteado
         if (obj.id == sorteado) {
           //chama a funçao acertou passando a div escolhida pelo jogador
@@ -96,6 +99,13 @@
           //armazena a div aonde Smile está escondido (getElementById)
           const objSorteado = document.getElementById(sorteado);
           //chama a funçao acertou para mostrar a div aonde está o Smile
+            const img = new Image(100);
+           img.id = "erroimg";
+      //altera o atributo src (source) da imagem criada
+            img.src = "https://static.vecteezy.com/system/resources/previews/066/724/980/non_2x/sad-cat-face-angry-expression-domestic-pet-isolated-on-transparent-background-png.png";
+      //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
+           obj.appendChild(img);
+          
           acertou(objSorteado);
         }
         //chama a funçao que atualiza o placar
